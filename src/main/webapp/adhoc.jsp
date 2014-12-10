@@ -12,7 +12,7 @@
     <script type="text/javascript" src="lib/js/bootstrap.js"></script>
     <script type="text/javascript" src="lib/js/codemirror.js"></script>
     <script type="text/javascript" src="lib/js/sql.js"></script>
-    <script type="text/javascript" src="query.js"></script>
+    <script type="text/javascript" src="adhoc.js"></script>
     <link rel="stylesheet" href="lib/css/codemirror.css">
     <link rel="stylesheet" href="lib/css/bootstrap.css">
 </head>
@@ -24,14 +24,7 @@
             <%@include file="side-left.jsp"%>
         </div>
         <div class="col-md-10">
-            <textarea id="sqledit" wrap="virtual" rows="10" cols="100" style="color:Indigo; font-family:'verdana'; font-size:20px; border: none"></textarea>
-            <div class="btn-group">
-                <button type="button" class="btn btn-default btn-lg">1</button>
-                <button type="button" class="btn btn-default btn-lg">2</button>
-                <button type="button" class="btn btn-default btn-lg">3</button>
-            </div>
-            <button type="button" class="btn btn-primary btn-lg" style="margin-left: 30%">submit</button>
-            <button type="button" class="btn btn-danger btn-lg" style="margin-left: 3%">kill</button>
+            <%@include file="adhoc-main.jsp"%>
         </div>
     </div>
 </div>

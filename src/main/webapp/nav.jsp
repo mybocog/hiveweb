@@ -11,10 +11,11 @@
     </div>
     <div>
         <ul class="nav navbar-nav">
-            <li><a href="#">Adhoc</a></li>
-            <li><a href="#">Download</a></li>
-            <li><a href="#">Kill Job</a></li>
-            <li><a href="#">Add Table</a></li>
+            <li><a href="#">AdHoc1</a></li>
+            <li><a href="#">AdHoc2</a></li>
+            <li><a href="#">RunQuery</a></li>
+            <li><a href="#">History</a></li>
+            <li><a href="#">KillJob</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right" style="margin-right: 10">
             <li><a href="#">UserName</a></li>
