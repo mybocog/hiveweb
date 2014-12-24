@@ -22,7 +22,7 @@
             <input type="button" id="kill" class="btn btn-danger" value="kill" onclick="killjobid()" style="margin-top:20; display: none"></button>
         </div>
         <div class="col-md-1">
-            <input type="button" id="submit" class="btn btn-warning" value="submit" onclick="submitjobid()" ></button>
+            <input type="button" id="submit" class="btn btn-warning" value="kill" onclick="submitjobid()" ></button>
         </div>
         <div class="col-md-8">
         </div>

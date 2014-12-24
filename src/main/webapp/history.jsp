@@ -10,30 +10,15 @@
 <head>
     <script type="text/javascript" src="lib/js/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="lib/js/bootstrap.js"></script>
-    <script type="text/javascript" src="adhoc.js"></script>
+    <script type="text/javascript" src="history.js"></script>
     <link rel="stylesheet" href="lib/css/bootstrap.css">
 </head>
-<body onload="loadcm()">
+<body onload="preload()">
 <%@include file="nav.jsp"%>
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-12">
-            <table class="table">
-                <tr class="active">
-                    <td>select count(1) from orders</td>
-                </tr>
-                <tr class="success">
-                    <td>select count(1) from orders</td>
-                </tr>
-                <tr class="warning">
-                    <td>select count(1) from orders</td>
-                </tr>
-                <tr class="danger">
-                    <td>select count(1) from orders</td>
-                </tr>
-                <tr class="info">
-                    <td>select count(1) from orders</td>
-                </tr>
+            <table id="historytable" class="table table-hover table-striped">
             </table>
         </div>
     </div>

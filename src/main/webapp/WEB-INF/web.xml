@@ -6,6 +6,14 @@
   <display-name>Archetype Created Web Application</display-name>
 
     <servlet>
+        <servlet-name>download</servlet-name>
+        <servlet-class>downloadServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>history</servlet-name>
+        <servlet-class>historyServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>killjob</servlet-name>
         <servlet-class>killjobServlet</servlet-class>
     </servlet>
@@ -14,6 +22,14 @@
         <servlet-class>loginServlet</servlet-class>
     </servlet>
 
+    <servlet-mapping>
+        <servlet-name>download</servlet-name>
+        <url-pattern>/download</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>history</servlet-name>
+        <url-pattern>/history</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>killjob</servlet-name>
         <url-pattern>/killjob</url-pattern>

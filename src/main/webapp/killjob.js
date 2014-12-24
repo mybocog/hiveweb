@@ -13,6 +13,7 @@ function submitjobid(){
     submitbutton.style.display="none"
     var killbutton = document.getElementById("kill");
     killbutton.style.display=""
+    killbutton.disabled =""
     killbutton.value="ARE YOU SURE?"
 }
 
@@ -26,6 +27,7 @@ function killjobid(){
     }
 
     var killbutton = document.getElementById("kill");
+    killbutton.disabled ="disabled"
     killbutton.value="waiting..."
 
     var xmlhttp;
@@ -39,5 +41,7 @@ function killjobid(){
             killbutton.value=xmlhttp.responseText;
         }
     };
-
+    killbutton.style.display="none"
+    var submitbutton = document.getElementById("submit");
+    submitbutton.style.display=""
 }
