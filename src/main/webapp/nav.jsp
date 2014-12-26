@@ -14,11 +14,13 @@
             <li><a href="adhoc.jsp">AdHoc1</a></li>
             <li><a href="adhoc.jsp">AdHoc2</a></li>
             <li><a href="history.jsp">History</a></li>
-            <li><a href="runquery.jsp">RunQuery</a></li>
+            <%--
+                        <li><a href="runquery.jsp">RunQuery</a></li>
+            --%>
             <li><a href="killjob.jsp">KillJob</a></li>
-<%--
-            <li><a href="#" target="_blank">JobMonitor</a></li>
---%>
+            <%--
+                        <li><a href="#" target="_blank">JobMonitor</a></li>
+            --%>
         </ul>
         <ul class="nav navbar-nav navbar-right" style="margin-right: 10">
             <li><a href="#">UserName</a></li>
