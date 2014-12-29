@@ -5,7 +5,7 @@
   Time: 10:26
   To change this template use File | Settings | File Templates.
 --%>
-<nav class="nav" style="margin-bottom: 20">
+<nav class="nav navbar-default" role="navigation" style="margin-bottom: 20;">
     <div class="navbar-header">
             <p class="navbar-brand">HiveWeb</p>
     </div>

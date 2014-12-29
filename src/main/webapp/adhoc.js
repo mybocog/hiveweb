@@ -18,6 +18,34 @@ function loadcm()
     });
 }
 
+function dbinfo(username){
+    var xmlhttp;
+    xmlhttp=new XMLHttpRequest();
+    xmlhttp.open("GET","/dbinfo?&username="+username+"&rand="+new Date().getTime(),true);
+    xmlhttp.send();
+    xmlhttp.onreadystatechange=function()
+    {
+        if (xmlhttp.readyState==4 && xmlhttp.status==200 )
+        {
+            xmlhttp.responseText;
+        }
+    };
+}
+
+function tableinfo(username){
+    var xmlhttp;
+    xmlhttp=new XMLHttpRequest();
+    xmlhttp.open("GET","/tableinfo?&username="+username+"&rand="+new Date().getTime(),true);
+    xmlhttp.send();
+    xmlhttp.onreadystatechange=function()
+    {
+        if (xmlhttp.readyState==4 && xmlhttp.status==200 )
+        {
+            xmlhttp.responseText;
+        }
+    };
+}
+
 
 Date.prototype.format = function(format)
 {

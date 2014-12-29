@@ -5,20 +5,22 @@
   Time: 17:20
   To change this template use File | Settings | File Templates.
 --%>
-
-<textarea id="sqledit" wrap="virtual" rows="10" cols="100" style="color:Indigo; font-family:'verdana'; font-size:20px; border: none"></textarea>
-<button type="button" class="btn btn-lg" style="width: 90; background-color: #428bca">submit</button>
-<button type="button" class="btn btn-lg" style="width: 90; background-color: crimson">kill</button>
-
-<div id="hiveprogress" style="margin-top:20; width:100%;height:auto;overflow:hidden;" >
-    <p style="color: yellowgreen">adsfadsfads</p>
-    <p style="color: yellowgreen">adsfadsfads</p>
-    <p style="color: yellowgreen">adsfadsfads</p>
-    <p style="color: yellowgreen">adsfadsfads</p>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-11">
+            <textarea class="form-control" id="sqledit" wrap="virtual" rows="10" cols="100" style="color:Indigo; font-family:'verdana'; font-size:20px; border: none"></textarea>
+        </div>
+        <div class="col-md-1">
+            <div class="btn-group-vertical">
+                <button type="button" class="btn btn-lg btn-info" style="width: 90;">submit</button>
+                <button type="button" class="btn btn-lg btn-danger" style="width: 90;">stop</button>
+                <button type="button" class="btn btn-lg btn-success" style="width: 90;">last</button>
+                <button type="button" class="btn btn-lg btn-info" style="width: 90;">next</button>
+            </div>
+        </div>
 </div>
 
-
-<div id="hiveresult" style="margin-top:20; width:100%;height:auto;overflow:auto;" >
+<div id="hiveresult" style="width:100%;height:auto;overflow:auto;margin-top: 30" >
     <table class="table table-hover table-bordered table-striped">
     <thead>
         <tr>
@@ -64,3 +66,13 @@
         </tr>
     </table>
 </div>
+
+
+
+    <ul class="list-unstyled">
+        <li>adsfadsfads</li>
+        <li>adsfadsfads</li>
+        <li>adsfadsfads</li>
+        <li>adsfadsfads</li>
+    </ul>
+
