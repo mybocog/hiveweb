@@ -18,14 +18,19 @@ public class dbinfoServlet extends HttpServlet{
         String dbusername = myconfig.getInstance().getProperty("db_account");
         String dbpassword = myconfig.getInstance().getProperty("db_password");
         String driver = "com.mysql.jdbc.Driver";
+        String dblist = "";
         try {
             Class.forName(driver);
             Connection conn = (Connection) DriverManager.getConnection(dburl, dbusername, dbpassword);
             Statement statement = (Statement) conn.createStatement();
-            String _sql = "select forbiddentable from privilege where account='" + username + "'";
+            String _sql = "select db from dbpriv where account='" + username + "'";
             ResultSet rs = statement.executeQuery(_sql);
-            if (rs.next()) {
-//                ftset = rs.getString("forbiddentable");
+            while (rs.next()) {
+                if(!dblist.equals("")){
+                    dblist+=",";
+                }
+                String tmp = rs.getString("db");
+                dblist = dblist + tmp;
             }
         }
         catch (ClassNotFoundException e) {
@@ -35,5 +40,6 @@ public class dbinfoServlet extends HttpServlet{
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+        out.write(dblist);
     }
 }

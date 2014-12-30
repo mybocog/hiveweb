@@ -14,7 +14,7 @@ import java.util.Properties;
 public class myconfig {
 
     private static final myconfig instance = new myconfig();
-    String configfile = "conf/hiveweb.properties";
+    String configfile = "hiveweb.properties";
     Properties prop = new Properties();
 
     public static myconfig getInstance() {
@@ -23,10 +23,7 @@ public class myconfig {
 
     private myconfig() {
         try {
-            String path =  System.getProperty("user.dir");
-            FileInputStream fis;
-            fis = new FileInputStream(new File(path + configfile));
-            prop.load(fis);
+            prop.load(this.getClass().getClassLoader().getResourceAsStream(configfile));
         } catch (FileNotFoundException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -34,7 +31,6 @@ public class myconfig {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-
     }
 
     public String getProperty(String k){

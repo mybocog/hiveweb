@@ -18,7 +18,8 @@ function loadcm()
     });
 }
 
-function dbinfo(username){
+function dbinfo(){
+    var username = "test"
     var xmlhttp;
     xmlhttp=new XMLHttpRequest();
     xmlhttp.open("GET","/dbinfo?&username="+username+"&rand="+new Date().getTime(),true);
@@ -27,7 +28,14 @@ function dbinfo(username){
     {
         if (xmlhttp.readyState==4 && xmlhttp.status==200 )
         {
-            xmlhttp.responseText;
+            dblist = xmlhttp.responseText;
+            dbs = dblist.split(",")
+            var tmphtml = ""
+            for(i in dbs){
+                tmphtml += "<option>"+dbs[i]+"</option>"
+            }
+            var dbselect = document.getElementById("dbselect");
+            dbselect.innerHTML=tmphtml
         }
     };
 }

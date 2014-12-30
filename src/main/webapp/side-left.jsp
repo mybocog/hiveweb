@@ -7,9 +7,9 @@
 --%>
 <div class="container-fluid">
 
-        <select class="form-control" style="margin-bottom: 20">
-            <option value="0">asdb</option>
-            <option value="1">Spider Man</option>
+        <select id="dbselect" class="form-control" style="margin-bottom: 20">
+            <option>null1</option>
+            <option>null2</option>
         </select>
 
     <div class="panel panel panel-default">

@@ -7,10 +7,10 @@
 --%>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-11">
+        <div class="col-md-10">
             <textarea class="form-control" id="sqledit" wrap="virtual" rows="10" cols="100" style="color:Indigo; font-family:'verdana'; font-size:20px; border: none"></textarea>
         </div>
-        <div class="col-md-1">
+        <div class="col-md-2">
             <div class="btn-group-vertical">
                 <button type="button" class="btn btn-lg btn-info" style="width: 90;">submit</button>
                 <button type="button" class="btn btn-lg btn-danger" style="width: 90;">stop</button>

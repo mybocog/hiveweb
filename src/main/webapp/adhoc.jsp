@@ -16,14 +16,14 @@
     <link rel="stylesheet" href="lib/css/codemirror.css">
     <link rel="stylesheet" href="lib/css/bootstrap.css">
 </head>
-<body onload="loadcm()">
+<body onload="loadcm();dbinfo()">
 <%@include file="nav.jsp"%>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-2">
+        <div class="col-md-3">
             <%@include file="side-left.jsp"%>
         </div>
-        <div class="col-md-10">
+        <div class="col-md-9">
             <%@include file="adhoc-main.jsp"%>
         </div>
     </div>
