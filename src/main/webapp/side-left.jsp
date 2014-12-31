@@ -7,34 +7,25 @@
 --%>
 <div class="container-fluid">
 
-    <select id="dbselect" class="form-control" style="margin-bottom: 20">
-        <option>null1</option>
-        <option>null2</option>
+    <select id="dbselect" class="form-control" style="margin-bottom: 20" onchange="dbchange(this.value)">
+        <option> </option>
     </select>
 
     <div class="panel panel panel-default">
-        <div id="db_panel_head" class="panel-heading" style="background-color: #ddd"><b>mysql</b></div>
+        <div id="db_panel_head" class="panel-heading" style="background-color: #ddd"><b>dbname</b></div>
         <div id="db_panel_list" class="list-group">
-            <a href="#" class="list-group-item" onclick="desctable('a')"><span class="badge"></span><b>a</b></a>
-            <a href="#" class="list-group-item" onclick="desctable('b')"><span class="badge"></span><b>b</b></a>
-            <a href="#" class="list-group-item" onclick="desctable('c')"><span class="badge"></span><b>c</b></a>
-            <a href="#" class="list-group-item" onclick="desctable('d')"><span class="badge"></span><b>d</b></a>
+            <a href="#" class="list-group-item" onclick="desctable('a')"><span class="badge"></span><b>tablename</b></a>
         </div>
     </div>
 
     <div class="panel panel panel-default">
-        <div id="tb_panel_head" class="panel-heading" style="background-color: #ddd"><b>orders</b></div>
+        <div id="tb_panel_head" class="panel-heading" style="background-color: #ddd"><b>table name</b></div>
         <div id="tb_panel_body" class="panel-body">
-            <p>updated at 2014.12.28 4:23</p>
-            <p>external table</p>
+            <p>table info</p>
         </div>
 
         <ul id="tb_panel_list" class="list-group">
-            <li class="list-group-item"><span class="badge">int</span><b>order_id</b></li>
-            <li class="list-group-item"><span class="badge">int</span><b>uid</b></li>
-            <li class="list-group-item"><span class="badge">string</span><b>name</b></li>
-            <li class="list-group-item"><span class="badge">long</span><b>timestamp</b></li>
-            <li class="list-group-item"><span class="badge">long</span><b>create</b></li>
+            <li class="list-group-item"><span class="badge">type</span><b>column</b></li>
         </ul>
     </div>
 </div>

@@ -14,23 +14,36 @@ public class desctableServlet extends HttpServlet{
     public void doGet( HttpServletRequest rq,HttpServletResponse rp ) throws IOException,ServletException{
         PrintWriter out=rp.getWriter();
         String username = "test";
+        String db = rq.getParameter("db");
+        String tb = rq.getParameter("tb");
         String dburl = myconfig.getInstance().getProperty("hivemeta_db_connection_url");
         String dbusername = myconfig.getInstance().getProperty("hivemeta_db_account");
         String dbpassword = myconfig.getInstance().getProperty("hivemeta_db_password");
         String driver = "com.mysql.jdbc.Driver";
-        String dblist = "";
+        String collist = "";
+        String typelist ="";
+        String tbltype ="";
         try {
             Class.forName(driver);
             Connection conn = (Connection) DriverManager.getConnection(dburl, dbusername, dbpassword);
             Statement statement = (Statement) conn.createStatement();
-            String _sql = "select db from dbpriv where account='" + username + "'";
+            String _sql = "select * from (select t.TBL_ID from TBLS t join DBS d on t.DB_ID=d.DB_ID where d.NAME='"+db+"' and t.TBL_NAME='"+tb+"' ) tmp join COLUMNS_V2 c on tmp.TBL_ID=c.CD_ID";
             ResultSet rs = statement.executeQuery(_sql);
             while (rs.next()) {
-                if(!dblist.equals("")){
-                    dblist+=",";
+                if(!collist.equals("")){
+                    collist+=",";
                 }
-                String tmp = rs.getString("db");
-                dblist = dblist + tmp;
+                String tmp = rs.getString("COLUMN_NAME");
+                collist = collist + tmp;
+                if(!typelist.equals("")){
+                    typelist+=",";
+                }
+                String tmp2 = rs.getString("TYPE_NAME");
+                typelist = typelist + tmp2;
+            }
+            rs = statement.executeQuery("select t.TBL_TYPE from TBLS t join DBS d on t.DB_ID=d.DB_ID where d.NAME='"+db+"' and t.TBL_NAME='"+tb+"'");
+            if(rs.next()){
+                tbltype = rs.getString("TBL_TYPE");
             }
         }
         catch (ClassNotFoundException e) {
@@ -40,6 +53,6 @@ public class desctableServlet extends HttpServlet{
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        out.write(dblist);
+        out.write(collist+":"+typelist+":"+tbltype);
     }
 }

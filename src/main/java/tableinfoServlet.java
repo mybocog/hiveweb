@@ -24,13 +24,13 @@ public class tableinfoServlet extends HttpServlet{
             Class.forName(driver);
             Connection conn = (Connection) DriverManager.getConnection(dburl, dbusername, dbpassword);
             Statement statement = (Statement) conn.createStatement();
-            String _sql = "select TBLS.TBL_NAME from DBS join TBLS on DBS.DB_ID=TBLS.DB_ID where DBS.NAME='"+db+"'";
+            String _sql = "select t.TBL_NAME from DBS d join TBLS t on d.DB_ID=t.DB_ID where d.NAME='"+db+"'";
             ResultSet rs = statement.executeQuery(_sql);
             while (rs.next()) {
                 if(!tblist.equals("")){
                     tblist+=",";
                 }
-                String tmp = rs.getString("db");
+                String tmp = rs.getString("TBL_NAME");
                 tblist = tblist + tmp;
             }
         }
@@ -42,7 +42,6 @@ public class tableinfoServlet extends HttpServlet{
             e.printStackTrace();
         }
 
-//        out.write(tblist);
-        out.write("t1,t2,t3");
+        out.write(tblist);
     }
 }

@@ -62,7 +62,7 @@ function tableinfo(db){
             tbs = tblist.split(",")
             var tmphtml = ""
             for(i in tbs){
-                tmphtml += "<a class=\"list-group-item\" onclick=\"desctable('"+tbs[i]+"')\"><b>"+tbs[i]+"</b></a>"
+                tmphtml += "<a class=\"list-group-item\" onclick=\"desctable('"+db+"','"+tbs[i]+"')\"><b>"+tbs[i]+"</b></a>"
             }
             var db_panel_list = document.getElementById("db_panel_list");
             db_panel_list.innerHTML=tmphtml
@@ -70,9 +70,36 @@ function tableinfo(db){
     };
 }
 
-function desctable(v){
-    var tb_panel_head = document.getElementById("tb_panel_head");
-    tb_panel_head.innerHTML="<b>"+v+"</b>";
+function desctable(db,tb){
+        var xmlhttp;
+        xmlhttp=new XMLHttpRequest();
+        xmlhttp.open("GET","/desctable?&db="+db+"&tb="+tb+"&rand="+new Date().getTime(),true);
+        xmlhttp.send();
+        xmlhttp.onreadystatechange=function()
+        {
+            if (xmlhttp.readyState==4 && xmlhttp.status==200 )
+            {
+                rp = xmlhttp.responseText;
+                rps = rp.split(":")
+                cols = rps[0].split(",")
+                types = rps[1].split(",")
+                var tmphtml = ""
+                for(i in cols){
+                    tmphtml += "<li class=\"list-group-item\"><span class=\"badge\">"+types[i]+"</span><b>"+cols[i]+"</b></li>"
+                }
+
+                var tb_panel_head = document.getElementById("tb_panel_head");
+                tb_panel_head.innerHTML="<b>"+tb+"</b>";
+                var tb_panel_body = document.getElementById("tb_panel_body");
+                tb_panel_body.innerHTML="<p>"+rps[2]+"</p>";
+                var tb_panel_list = document.getElementById("tb_panel_list");
+                tb_panel_list.innerHTML=tmphtml;
+            }
+        };
+}
+
+function dbchange(db){
+    tableinfo(db)
 }
 
 Date.prototype.format = function(format)
