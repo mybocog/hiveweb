@@ -14,7 +14,8 @@ function loadcm()
     var mime="text/x-mysql";
     editor = CodeMirror.fromTextArea(document.getElementById('sqledit'), {
         mode: mime,
-        lineWrapping:true
+        lineWrapping:true,
+        lineNumbers: true
     });
 }
 
@@ -28,32 +29,51 @@ function dbinfo(){
     {
         if (xmlhttp.readyState==4 && xmlhttp.status==200 )
         {
+            db1st=""
             dblist = xmlhttp.responseText;
             dbs = dblist.split(",")
             var tmphtml = ""
             for(i in dbs){
+                db1st=dbs[0]
                 tmphtml += "<option>"+dbs[i]+"</option>"
             }
             var dbselect = document.getElementById("dbselect");
             dbselect.innerHTML=tmphtml
+
+            tableinfo(db1st)
         }
     };
 }
 
-function tableinfo(username){
+function tableinfo(db){
+    var db_panel_head = document.getElementById("db_panel_head");
+    db_panel_head.innerHTML="<b>"+db+"</b>"
+    var db_panel_list = document.getElementById("db_panel_list");
+    db_panel_list.innerHTML="<a class=\"list-group-item\"><b>null</b></a>"
     var xmlhttp;
     xmlhttp=new XMLHttpRequest();
-    xmlhttp.open("GET","/tableinfo?&username="+username+"&rand="+new Date().getTime(),true);
+    xmlhttp.open("GET","/tableinfo?&db="+db+"&rand="+new Date().getTime(),true);
     xmlhttp.send();
     xmlhttp.onreadystatechange=function()
     {
         if (xmlhttp.readyState==4 && xmlhttp.status==200 )
         {
-            xmlhttp.responseText;
+            tblist = xmlhttp.responseText;
+            tbs = tblist.split(",")
+            var tmphtml = ""
+            for(i in tbs){
+                tmphtml += "<a class=\"list-group-item\" onclick=\"desctable('"+tbs[i]+"')\"><b>"+tbs[i]+"</b></a>"
+            }
+            var db_panel_list = document.getElementById("db_panel_list");
+            db_panel_list.innerHTML=tmphtml
         }
     };
 }
 
+function desctable(v){
+    var tb_panel_head = document.getElementById("tb_panel_head");
+    tb_panel_head.innerHTML="<b>"+v+"</b>";
+}
 
 Date.prototype.format = function(format)
 {

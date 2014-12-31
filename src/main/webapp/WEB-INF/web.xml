@@ -6,6 +6,10 @@
   <display-name>Archetype Created Web Application</display-name>
 
     <servlet>
+        <servlet-name>desctable</servlet-name>
+        <servlet-class>desctableServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>dbinfo</servlet-name>
         <servlet-class>dbinfoServlet</servlet-class>
     </servlet>
@@ -30,6 +34,11 @@
         <servlet-class>loginServlet</servlet-class>
     </servlet>
 
+
+    <servlet-mapping>
+        <servlet-name>desctable</servlet-name>
+        <url-pattern>/desctable</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>dbinfo</servlet-name>
         <url-pattern>/dbinfo</url-pattern>

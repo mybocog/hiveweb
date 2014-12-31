@@ -24,7 +24,7 @@
             <%@include file="side-left.jsp"%>
         </div>
         <div class="col-md-9">
-            <%@include file="adhoc-main.jsp"%>
+            <%@include file="adhoc-edit.jsp"%>
         </div>
     </div>
 </div>

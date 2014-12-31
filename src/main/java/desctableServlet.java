@@ -9,29 +9,28 @@ import java.sql.SQLException;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.Statement;
 
-public class tableinfoServlet extends HttpServlet{
+public class desctableServlet extends HttpServlet{
 
     public void doGet( HttpServletRequest rq,HttpServletResponse rp ) throws IOException,ServletException{
         PrintWriter out=rp.getWriter();
         String username = "test";
-        String db = rq.getParameter("db");
         String dburl = myconfig.getInstance().getProperty("hivemeta_db_connection_url");
         String dbusername = myconfig.getInstance().getProperty("hivemeta_db_account");
         String dbpassword = myconfig.getInstance().getProperty("hivemeta_db_password");
         String driver = "com.mysql.jdbc.Driver";
-        String tblist = "";
+        String dblist = "";
         try {
             Class.forName(driver);
             Connection conn = (Connection) DriverManager.getConnection(dburl, dbusername, dbpassword);
             Statement statement = (Statement) conn.createStatement();
-            String _sql = "select TBLS.TBL_NAME from DBS join TBLS on DBS.DB_ID=TBLS.DB_ID where DBS.NAME='"+db+"'";
+            String _sql = "select db from dbpriv where account='" + username + "'";
             ResultSet rs = statement.executeQuery(_sql);
             while (rs.next()) {
-                if(!tblist.equals("")){
-                    tblist+=",";
+                if(!dblist.equals("")){
+                    dblist+=",";
                 }
                 String tmp = rs.getString("db");
-                tblist = tblist + tmp;
+                dblist = dblist + tmp;
             }
         }
         catch (ClassNotFoundException e) {
@@ -41,8 +40,6 @@ public class tableinfoServlet extends HttpServlet{
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-
-//        out.write(tblist);
-        out.write("t1,t2,t3");
+        out.write(dblist);
     }
 }
