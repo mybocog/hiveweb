@@ -1,0 +1,12 @@
+create table dbpriv(
+account varchar(20) NOT NULL,
+db varchar(30) NOT NULL,
+maxline int NOT NULL DEFAULT 30,
+PRIMARY KEY (account)
+)
+
+create table user(
+account varchar(20) NOT NULL,
+password varchar(40) NOT NULL,
+PRIMARY KEY (account)
+)

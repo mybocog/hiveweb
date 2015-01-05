@@ -260,11 +260,11 @@ function updatestatus()
     };
 }
 
-function killjob()
+function killjob(jobno)
 {
     var xmlhttp;
     xmlhttp=new XMLHttpRequest();
-    xmlhttp.open("GET","/data/killmrjob?&rand="+new Date().getTime(),true);
+    xmlhttp.open("GET","/killhive?&jobno="+jobno+"&rand="+new Date().getTime(),true);
     xmlhttp.send();
     xmlhttp.onreadystatechange=function()
     {

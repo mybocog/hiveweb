@@ -48,10 +48,25 @@ public class desctableServlet extends HttpServlet{
         }
         catch (ClassNotFoundException e) {
             // TODO Auto-generated catch block
+            collist = "null";
+            typelist ="null";
+            tbltype ="null";
             e.printStackTrace();
         } catch (SQLException e) {
             // TODO Auto-generated catch block
+            collist = "null";
+            typelist ="null";
+            tbltype ="null";
             e.printStackTrace();
+        }
+        if(collist.equals("")){
+            collist = "null";
+        }
+        if(typelist.equals("")){
+            typelist = "null";
+        }
+        if(tbltype.equals("")){
+            tbltype = "null";
         }
         out.write(collist+":"+typelist+":"+tbltype);
     }

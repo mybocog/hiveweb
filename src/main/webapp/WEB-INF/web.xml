@@ -4,7 +4,14 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
-
+    <servlet>
+        <servlet-name>killhive</servlet-name>
+        <servlet-class>killhiveServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>resetpwd</servlet-name>
+        <servlet-class>resetpwdServlet</servlet-class>
+    </servlet>
     <servlet>
         <servlet-name>desctable</servlet-name>
         <servlet-class>desctableServlet</servlet-class>
@@ -34,7 +41,14 @@
         <servlet-class>loginServlet</servlet-class>
     </servlet>
 
-
+    <servlet-mapping>
+        <servlet-name>killhive</servlet-name>
+        <url-pattern>/killhive</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>resetpwd</servlet-name>
+        <url-pattern>/resetpwd</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>desctable</servlet-name>
         <url-pattern>/desctable</url-pattern>
