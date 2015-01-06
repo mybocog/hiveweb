@@ -12,7 +12,7 @@
         </div>
         <div class="col-md-2">
             <div class="btn-group-vertical" style="width: 100%; margin-bottom: 30">
-                <button type="button" class="btn btn-lg btn-info" style="">submit</button>
+                <button type="button" id="submitbutton" class="btn btn-lg btn-info" style="" onclick="submitsql()" c>submit</button>
 
             </div>
             <div class="btn-group-vertical" style="width: 100%">
@@ -70,10 +70,12 @@
 
 
 
-    <ul class="list-unstyled">
+    <ul id="display" class="list-unstyled">
         <li>adsfadsfads</li>
         <li>adsfadsfads</li>
         <li>adsfadsfads</li>
         <li>adsfadsfads</li>
     </ul>
 
+    <div id="divdownload">
+    </div>

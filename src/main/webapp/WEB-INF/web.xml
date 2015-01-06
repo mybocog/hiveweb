@@ -5,6 +5,18 @@
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
     <servlet>
+        <servlet-name>getStatus</servlet-name>
+        <servlet-class>getStatusServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>getprocess</servlet-name>
+        <servlet-class>getprocessServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>handlesql</servlet-name>
+        <servlet-class>handlesqlServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>killhive</servlet-name>
         <servlet-class>killhiveServlet</servlet-class>
     </servlet>
@@ -41,6 +53,18 @@
         <servlet-class>loginServlet</servlet-class>
     </servlet>
 
+    <servlet-mapping>
+        <servlet-name>getStatus</servlet-name>
+        <url-pattern>/getStatus</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>getprocess</servlet-name>
+        <url-pattern>/getprocess</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>handlesql</servlet-name>
+        <url-pattern>/handlesql</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>killhive</servlet-name>
         <url-pattern>/killhive</url-pattern>

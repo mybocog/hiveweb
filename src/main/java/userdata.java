@@ -17,6 +17,8 @@ public class userdata {
         public String para2;
         public String status1;
         public String status2;
+        public String sql1;
+        public String sql2;
         public userinfo(String username){
             account = username;
             jobid1="";
@@ -25,6 +27,8 @@ public class userdata {
             para2="";
             status1="";
             status2="";
+            sql1="";
+            sql2="";
         }
     }
 
@@ -67,6 +71,18 @@ public class userdata {
             }
             else if(i==2){
                 return userdataset.get(username).para2;
+            }
+        }
+        return null;
+    }
+
+    public String getUsersql(String username, int i){
+        if(userdataset.containsKey(username)){
+            if(i==1){
+                return userdataset.get(username).sql1;
+            }
+            else if(i==2){
+                return userdataset.get(username).sql2;
             }
         }
         return null;
@@ -136,6 +152,29 @@ public class userdata {
             }
             else if(i==2){
                 u.para2=para;
+            }
+            userdataset.put(username, u);
+        }
+    }
+
+    public synchronized void setUsersql(String username, String sql, int i){
+        if(userdataset.containsKey(username)){
+            userinfo u = userdataset.get(username);
+            if(i==1){
+                u.sql1=sql;
+            }
+            else if(i==2){
+                u.sql2=sql;
+            }
+            userdataset.put(username, u);
+        }
+        else {
+            userinfo u = new userinfo(username);
+            if(i==1){
+                u.sql1=sql;
+            }
+            else if(i==2){
+                u.sql2=sql;
             }
             userdataset.put(username, u);
         }
