@@ -47,9 +47,9 @@ public class desctableServlet extends HttpServlet{
                 tbltype = rs.getString("TBL_TYPE");
             }
             if(tbltype.equals("MANAGED_TABLE")){
-                rs = statement.executeQuery("select PARAM_VALUE from TABLE_PARAMS tp join (select t.TBL_NAME,t.TBL_ID from TBLS t join DBS d on t.DB_ID=d.DB_ID where d.NAME='"+db+"' and t.TBL_NAME='"+tb+"') nt on tp.TBL_ID=nt.TBL_ID where PARAM_KEY=\"transient_lastDdlTime\";");
+                rs = statement.executeQuery("select FROM_UNIXTIME(PARAM_VALUE, '%Y-%m-%d %H:%m') as upt from TABLE_PARAMS tp join (select t.TBL_NAME,t.TBL_ID from TBLS t join DBS d on t.DB_ID=d.DB_ID where d.NAME='"+db+"' and t.TBL_NAME='"+tb+"') nt on tp.TBL_ID=nt.TBL_ID where PARAM_KEY=\"transient_lastDdlTime\";");
                 if(rs.next()){
-                    tblupt = rs.getString("PARAM_VALUE");
+                    tblupt = rs.getString("upt");
                 }
             }
             else{
@@ -80,6 +80,6 @@ public class desctableServlet extends HttpServlet{
         if(tbltype.equals("")){
             tbltype = "null";
         }
-        out.write(collist+":"+typelist+":"+tbltype+":"+tblupt);
+        out.write(collist+";"+typelist+";"+tbltype+";"+tblupt);
     }
 }

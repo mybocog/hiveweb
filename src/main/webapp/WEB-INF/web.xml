@@ -5,8 +5,8 @@
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
     <servlet>
-        <servlet-name>getStatus</servlet-name>
-        <servlet-class>getStatusServlet</servlet-class>
+        <servlet-name>getstatus</servlet-name>
+        <servlet-class>getstatusServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>getprocess</servlet-name>
@@ -54,8 +54,8 @@
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>getStatus</servlet-name>
-        <url-pattern>/getStatus</url-pattern>
+        <servlet-name>getstatus</servlet-name>
+        <url-pattern>/getstatus</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>getprocess</servlet-name>

@@ -7,7 +7,7 @@ public class handlesqlServlet extends HttpServlet{
     public void doGet( HttpServletRequest rq,HttpServletResponse rp ) throws IOException,ServletException{
         PrintWriter out = rp.getWriter();
         String db = rq.getParameter("db");
-        int jobno = Integer.getInteger(rq.getParameter("j"));
+        int jobno = Integer.parseInt(rq.getParameter("j"));
         String username ="test";
 //        String username = (String) rq.getSession().getAttribute("username");
 //        if(username==null){

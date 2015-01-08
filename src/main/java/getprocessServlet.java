@@ -9,7 +9,7 @@ public class getprocessServlet extends HttpServlet{
         PrintWriter out=rp.getWriter();
         ServletContext context=getServletContext();
         String gettype = rq.getParameter("g");
-        int jobno = Integer.getInteger(rq.getParameter("j"));
+        int jobno = Integer.parseInt(rq.getParameter("j"));
         int totallinenum = Integer.parseInt(rq.getParameter("l"));
         int max_result_line_num = 1000;
         String username ="test";

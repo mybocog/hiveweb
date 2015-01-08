@@ -80,7 +80,7 @@ function desctable(db,tb){
             if (xmlhttp.readyState==4 && xmlhttp.status==200 )
             {
                 rp = xmlhttp.responseText;
-                rps = rp.split(":")
+                rps = rp.split(";")
                 cols = rps[0].split(",")
                 types = rps[1].split(",")
                 var tmphtml = ""
@@ -90,7 +90,7 @@ function desctable(db,tb){
                 var tb_panel_head = document.getElementById("tb_panel_head");
                 tb_panel_head.innerHTML="<b>"+tb+"</b>";
                 var tb_panel_body = document.getElementById("tb_panel_body");
-                tb_panel_body.innerHTML="<p>"+rps[2]+"</p><p>"+rps[3]+"</p>";
+                tb_panel_body.innerHTML="<p>"+rps[2]+"</p><p>"+rps[3]+" updated</p>";
                 var tb_panel_list = document.getElementById("tb_panel_list");
                 tb_panel_list.innerHTML=tmphtml;
             }
