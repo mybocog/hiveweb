@@ -27,48 +27,18 @@
         <tr>
             <th>567
             </th>
-            <th>dff
-            </th>
-            <th>asd
-            </th>
         </tr>
     </thead>
     <tr>
         <td>567
         </td>
-        <td>dff
-        </td>
-        <td>dff
-        </td>
     </tr>
     <tr>
         <td>123
         </td>
-        <td>345
-        </td>
-        <td>345
-        </td>
     </tr>
-        <tr>
-            <td>567
-            </td>
-            <td>dff
-            </td>
-            <td>dff
-            </td>
-        </tr>
-        <tr>
-            <td>123
-            </td>
-            <td>345
-            </td>
-            <td>dff
-            </td>
-        </tr>
     </table>
 </div>
-
-
 
     <ul id="display" class="list-unstyled">
         <li>adsfadsfads</li>

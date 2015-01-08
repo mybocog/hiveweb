@@ -41,7 +41,7 @@ public class tableinfoServlet extends HttpServlet{
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             tblist = "null";
-            e.printStackTrace();
+//            e.printStackTrace();
         }
         if(tblist.equals("")){
             tblist = "null";

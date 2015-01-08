@@ -21,17 +21,17 @@
     <form method="post" action="login">
         <div style="float: left; height: 240; width: 320" class="login-form">
             <div class="form-group">
-                <input type="text" class="form-control login-field" value="" placeholder="Enter your account" id="login-name" />
+                <input type="text" name="username" class="form-control login-field" value="" placeholder="Enter your account" id="login-name" />
                 <label class="login-field-icon fui-user" for="login-name"></label>
             </div>
 
             <div class="form-group">
-                <input type="password" class="form-control login-field" value="" placeholder="Password" id="login-pass" />
+                <input type="password" name="password" class="form-control login-field" value="" placeholder="Password" id="login-pass" />
                 <label class="login-field-icon fui-lock" for="login-pass"></label>
             </div>
 
-            <a class="btn btn-primary btn-lg btn-block" href="login">Log in</a>
-            <a class="login-link" href="#">Reset Password</a>
+            <button type="submit" class="btn btn-primary btn-lg btn-block">Log in</button>
+            <a class="login-link" href="resetpwd.jsp">Reset Password</a>
         </div>
     </form>
 </div>

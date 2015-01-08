@@ -4,13 +4,15 @@
 var intvid;
 var timestamp;
 var gettype;
-var linenum=20;
-var rand=0;
 var editor;
+var jobno;
+var processline=10;
 
+function setjobno(n){
+    jobno = n
+}
 
-function loadcm()
-{
+function loadcm(){
     var mime="text/x-mysql";
     editor = CodeMirror.fromTextArea(document.getElementById('sqledit'), {
         mode: mime,
@@ -23,7 +25,7 @@ function dbinfo(){
     var username = "test"
     var xmlhttp;
     xmlhttp=new XMLHttpRequest();
-    xmlhttp.open("GET","/dbinfo?&username="+username+"&rand="+new Date().getTime(),true);
+    xmlhttp.open("GET","/dbinfo?&u="+username+"&rand="+new Date().getTime(),true);
     xmlhttp.send();
     xmlhttp.onreadystatechange=function()
     {
@@ -48,8 +50,6 @@ function dbinfo(){
 function tableinfo(db){
     var db_panel_head = document.getElementById("db_panel_head");
     db_panel_head.innerHTML="<b>"+db+"</b>"
-    var db_panel_list = document.getElementById("db_panel_list");
-    db_panel_list.innerHTML="<a class=\"list-group-item\"><b>null</b></a>"
     var xmlhttp;
     xmlhttp=new XMLHttpRequest();
     xmlhttp.open("GET","/tableinfo?&db="+db+"&rand="+new Date().getTime(),true);
@@ -87,11 +87,10 @@ function desctable(db,tb){
                 for(i in cols){
                     tmphtml += "<li class=\"list-group-item\"><span class=\"badge\">"+types[i]+"</span><b>"+cols[i]+"</b></li>"
                 }
-
                 var tb_panel_head = document.getElementById("tb_panel_head");
                 tb_panel_head.innerHTML="<b>"+tb+"</b>";
                 var tb_panel_body = document.getElementById("tb_panel_body");
-                tb_panel_body.innerHTML="<p>"+rps[2]+"</p>";
+                tb_panel_body.innerHTML="<p>"+rps[2]+"</p><p>"+rps[3]+"</p>";
                 var tb_panel_list = document.getElementById("tb_panel_list");
                 tb_panel_list.innerHTML=tmphtml;
             }
@@ -121,12 +120,12 @@ Date.prototype.format = function(format)
     return format;
 }
 
-function getprocess(jobno)
+function getprocess()
 {
     var display = document.getElementById("display");
     var xmlhttp;
     xmlhttp=new XMLHttpRequest();
-    xmlhttp.open("GET","/getprocess?g="+gettype+"&j="+jobno+"&rand="+new Date().getTime(),true);
+    xmlhttp.open("GET","/getprocess?g="+gettype+"&j="+jobno+"&l="+processline+"&rand="+new Date().getTime(),true);
     xmlhttp.send();
     xmlhttp.onreadystatechange=function()
     {
@@ -142,7 +141,7 @@ function getprocess(jobno)
             if(gettype=="e" && str=="error")
             {
                 leaverunning();
-                setTimeout(getprocess(jobno),100);
+                setTimeout(getprocess(),100);
                 return;
             }
             display.innerHTML=xmlhttp.responseText;
@@ -157,7 +156,7 @@ function leaverunning()
     submitbutton.disabled="";
 }
 
-function enterrunning(para,jobno)
+function enterrunning(para)
 {
     timestamp=para;
     var submitbutton = document.getElementById("submitbutton");
@@ -165,19 +164,18 @@ function enterrunning(para,jobno)
     submitbutton.disabled="disabled";
     divdownload.innerHTML="";
     gettype="e";
-    intvid= setInterval(getprocess(jobno),1000);
+    intvid= setInterval(getprocess(),1000);
 }
 
-function enterfinished(para,jobno)
+function enterfinished(para)
 {
     gettype="r";
-    getprocess(jobno);
-
+    getprocess();
     var divdownload = document.getElementById("divdownload");
     divdownload.innerHTML="<a href=\"/download?&t="+para+"\">Download Result</a>";
 }
 
-function submitsql(jobno)
+function submitsql()
 {
     String.prototype.trim = function()
     {
@@ -190,13 +188,10 @@ function submitsql(jobno)
     var sqledit = document.getElementById("sqledit");
     var sqlstr = editor.getValue();
     sqlstr=sqlstr.trim();
-    if(sqlstr=="")
-    {
-        alert("Please input SQL");
+    if(sqlstr==""){
         return;
     }
-
-    if(sqlstr.search(/^\s*desc/i)!=-1 || sqlstr.search(/^\s*select/i)!=-1  || sqlstr.search(/^\s*show/i)!=-1)
+    if(sqlstr.search(/^\s*test/i)!=-1 || sqlstr.search(/^\s*desc/i)!=-1 || sqlstr.search(/^\s*select/i)!=-1  || sqlstr.search(/^\s*show/i)!=-1)
     {
 
     }
@@ -211,19 +206,18 @@ function submitsql(jobno)
     xmlhttp=new XMLHttpRequest();
     xmlhttp.open("POST","/handlesql?t="+timestamp+"&db="+db+"&j="+jobno+"&rand="+new Date().getTime(),true);
     xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-//    xmlhttp.send("sql="+encodeURI(sqlstr.replace(/%/g,"%25").replace(/\+/g,"%2B")));
     xmlhttp.send("sql="+sqlstr.replace(/%/g,"%25").replace(/\+/g,"%2B"));
     xmlhttp.onreadystatechange=function()
     {
-        if (xmlhttp.readyState==4 )
+        if (xmlhttp.readyState==4 && xmlhttp.status==200 )
         {
-            r=xmlhttp.responseText
-//          enterrunning(jobno,timestamp);
+//            xmlhttp.responseText
+            enterrunning(timestamp);
         }
     };
 }
 
-function updatestatus(jobno)
+function updatestatus()
 {
     var xmlhttp;
     xmlhttp=new XMLHttpRequest();
@@ -236,26 +230,27 @@ function updatestatus(jobno)
             var status=xmlhttp.responseText;
             if(status=="init")
             {
+                dbinfo();
                 return;
             }
 
             var words = status.split(";");
             sqledit = document.getElementById('sqledit')
-            sqledit.value = words[2]
+            sqledit.innerHTML = words[2]
             if(words[0]=="running")
             {
-                enterrunning(words[1], jobno);
+                enterrunning(words[1]);
                 return;
             }
             else if(words[0]=="finished")
             {
-                enterfinished(words[1], jobno);
+                enterfinished(words[1]);
             }
         }
     };
 }
 
-function killjob(jobno)
+function killjob()
 {
     var xmlhttp;
     xmlhttp=new XMLHttpRequest();

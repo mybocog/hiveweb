@@ -40,7 +40,7 @@ public class dbinfoServlet extends HttpServlet{
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             dblist = "null";
-            e.printStackTrace();
+//            e.printStackTrace();
         }
         if(dblist.equals("")){
             dblist = "null";

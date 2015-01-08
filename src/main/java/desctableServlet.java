@@ -23,6 +23,7 @@ public class desctableServlet extends HttpServlet{
         String collist = "";
         String typelist ="";
         String tbltype ="";
+        String tblupt ="";
         try {
             Class.forName(driver);
             Connection conn = (Connection) DriverManager.getConnection(dburl, dbusername, dbpassword);
@@ -45,19 +46,30 @@ public class desctableServlet extends HttpServlet{
             if(rs.next()){
                 tbltype = rs.getString("TBL_TYPE");
             }
+            if(tbltype.equals("MANAGED_TABLE")){
+                rs = statement.executeQuery("select PARAM_VALUE from TABLE_PARAMS tp join (select t.TBL_NAME,t.TBL_ID from TBLS t join DBS d on t.DB_ID=d.DB_ID where d.NAME='"+db+"' and t.TBL_NAME='"+tb+"') nt on tp.TBL_ID=nt.TBL_ID where PARAM_KEY=\"transient_lastDdlTime\";");
+                if(rs.next()){
+                    tblupt = rs.getString("PARAM_VALUE");
+                }
+            }
+            else{
+                tblupt = "";
+            }
         }
         catch (ClassNotFoundException e) {
             // TODO Auto-generated catch block
             collist = "null";
             typelist ="null";
             tbltype ="null";
+            tblupt ="null";
             e.printStackTrace();
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             collist = "null";
             typelist ="null";
             tbltype ="null";
-            e.printStackTrace();
+            tblupt ="null";
+//            e.printStackTrace();
         }
         if(collist.equals("")){
             collist = "null";
@@ -68,6 +80,6 @@ public class desctableServlet extends HttpServlet{
         if(tbltype.equals("")){
             tbltype = "null";
         }
-        out.write(collist+":"+typelist+":"+tbltype);
+        out.write(collist+":"+typelist+":"+tbltype+":"+tblupt);
     }
 }

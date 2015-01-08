@@ -12,20 +12,20 @@
     </select>
 
     <div class="panel panel panel-default">
-        <div id="db_panel_head" class="panel-heading" style="background-color: #ddd"><b>dbname</b></div>
+        <div id="db_panel_head" class="panel-heading" style="background-color: #ddd"><b>null</b></div>
         <div id="db_panel_list" class="list-group">
-            <a href="#" class="list-group-item" onclick="desctable('a')"><span class="badge"></span><b>tablename</b></a>
+            <a href="#" class="list-group-item" onclick="desctable('a')"><span class="badge"></span><b>null</b></a>
         </div>
     </div>
 
     <div class="panel panel panel-default">
-        <div id="tb_panel_head" class="panel-heading" style="background-color: #ddd"><b>table name</b></div>
+        <div id="tb_panel_head" class="panel-heading" style="background-color: #ddd"><b>null</b></div>
         <div id="tb_panel_body" class="panel-body">
-            <p>table info</p>
+            <p>null</p>
         </div>
 
         <ul id="tb_panel_list" class="list-group">
-            <li class="list-group-item"><span class="badge">type</span><b>column</b></li>
+            <li class="list-group-item"><span class="badge">type</span><b>null</b></li>
         </ul>
     </div>
 </div>
