@@ -122,10 +122,9 @@ Date.prototype.format = function(format)
 
 function getprocess()
 {
-    var display = document.getElementById("display");
     var xmlhttp;
     xmlhttp=new XMLHttpRequest();
-    xmlhttp.open("GET","/getprocess?g="+gettype+"&j="+jobno+"&l="+processline+"&rand="+new Date().getTime(),true);
+    xmlhttp.open("GET","/getprocess?&g="+gettype+"&j="+jobno+"&l="+processline+"&rand="+new Date().getTime(),true);
     xmlhttp.send();
     xmlhttp.onreadystatechange=function()
     {
@@ -141,10 +140,19 @@ function getprocess()
             if(gettype=="e" && str=="error")
             {
                 leaverunning();
-                setTimeout(getprocess(),100);
+                setTimeout(getprocess,100);
                 return;
             }
-            display.innerHTML=xmlhttp.responseText;
+            if(gettype=="e"){
+                var display = document.getElementById("display");
+                display.innerHTML=str;
+                return;
+            }
+            if(gettype=="r"){
+                var hiveresult = document.getElementById("hiveresult");
+                hiveresult.innerHTML=str;
+                return;
+            }
         }
     };
 }
@@ -161,16 +169,20 @@ function enterrunning(para)
     timestamp=para;
     var submitbutton = document.getElementById("submitbutton");
     var divdownload = document.getElementById("divdownload");
+    var hiveresult = document.getElementById("hiveresult");
     submitbutton.disabled="disabled";
     divdownload.innerHTML="";
+    hiveresult.innerHTML="";
     gettype="e";
-    intvid= setInterval(getprocess(),1000);
+    intvid= setInterval(getprocess,1000);
 }
 
 function enterfinished(para)
 {
     gettype="r";
     getprocess();
+    var display = document.getElementById("display");
+    display.innerHTML="";
     var divdownload = document.getElementById("divdownload");
     divdownload.innerHTML="<a href=\"/download?&t="+para+"\">Download Result</a>";
 }
@@ -230,13 +242,15 @@ function updatestatus()
             var status=xmlhttp.responseText;
             if(status=="init")
             {
+                loadcm();
                 dbinfo();
                 return;
             }
 
             var words = status.split(";");
-            sqledit = document.getElementById('sqledit')
-            sqledit.innerHTML = words[2]
+//            sqledit = document.getElementById('sqledit')
+//            sqledit.innerHTML = words[2]
+            loadcm();
             if(words[0]=="running")
             {
                 enterrunning(words[1]);

@@ -10,7 +10,7 @@ public class downloadServlet extends HttpServlet{
             OutputStream out;
             InputStream in;
 //            String user = (String) request.getSession().getAttribute("username");
-            String user = "test";
+            String user = "t";
 
             String str_time = request.getParameter("t");
 

@@ -51,11 +51,11 @@ class hiveExe extends Thread {
             process.destroy();
             if(i>0){
                 userdata.getInstance().setUserStatus(username, "finished", jobno);
-                userdata.getInstance().setUserjobid(username, "null", jobno);
+                userdata.getInstance().setUserjobid(username, "", jobno);
             }
             else{
                 userdata.getInstance().setUserStatus(username, "error", jobno);
-                userdata.getInstance().setUserjobid(username, "null", jobno);
+                userdata.getInstance().setUserjobid(username, "", jobno);
             }
         } catch (IOException e) {
             // TODO Auto-generated catch block

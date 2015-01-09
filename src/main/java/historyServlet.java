@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 public class historyServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         PrintWriter out = response.getWriter();
-        String username = "test";
+        String username = "t";
         String historylogpath=getServletContext().getRealPath("/userdata/"+username+"/history.log");
         BufferedReader reader = new BufferedReader(new FileReader(historylogpath));
         String line;

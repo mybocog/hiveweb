@@ -12,7 +12,7 @@ public class getprocessServlet extends HttpServlet{
         int jobno = Integer.parseInt(rq.getParameter("j"));
         int totallinenum = Integer.parseInt(rq.getParameter("l"));
         int max_result_line_num = 1000;
-        String username ="test";
+        String username ="t";
         //String username = (String) rq.getSession().getAttribute("username");
         //if(username==null){
         //    rp.sendRedirect("login.html");
@@ -68,14 +68,7 @@ public class getprocessServlet extends HttpServlet{
                             }
 
                         }
-                        out.write(str+"</br>");
-                    }
-                }
-                int n;
-                if( (n = totallinenum-size)>0){
-                    for(int j=0;j<n;j++)
-                    {
-                        out.write("</br>");
+                        out.write("<li>"+str+"</li>");
                     }
                 }
             }

@@ -11,15 +11,15 @@
         <option> </option>
     </select>
 
-    <div class="panel panel panel-default">
-        <div id="db_panel_head" class="panel-heading" style="background-color: #ddd"><b>null</b></div>
+    <div class="panel panel panel-info">
+        <div id="db_panel_head" class="panel-heading" style=""><b>null</b></div>
         <div id="db_panel_list" class="list-group">
             <a href="#" class="list-group-item" onclick="desctable('a')"><span class="badge"></span><b>null</b></a>
         </div>
     </div>
 
-    <div class="panel panel panel-default">
-        <div id="tb_panel_head" class="panel-heading" style="background-color: #ddd"><b>null</b></div>
+    <div class="panel panel panel-info">
+        <div id="tb_panel_head" class="panel-heading" style=""><b>null</b></div>
         <div id="tb_panel_body" class="panel-body">
             <p>null</p>
         </div>

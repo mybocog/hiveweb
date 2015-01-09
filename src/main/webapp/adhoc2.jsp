@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
-  Date: 2014/12/3
-  Time: 10:25
+  Date: 2015/1/9
+  Time: 17:18
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="lib/css/codemirror.css">
     <link rel="stylesheet" href="lib/css/bootstrap.css">
 </head>
-<body onload="setjobno('1');updatestatus();">
+<body onload="setjobno('2');updatestatus();">
 <%@include file="nav.jsp"%>
 <div class="container-fluid">
     <div class="row">

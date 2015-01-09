@@ -13,7 +13,7 @@ public class dbinfoServlet extends HttpServlet{
 
     public void doGet( HttpServletRequest rq,HttpServletResponse rp ) throws IOException,ServletException{
         PrintWriter out=rp.getWriter();
-        String username = "test";
+        String username = "t";
         String dburl = myconfig.getInstance().getProperty("db_connection_url");
         String dbusername = myconfig.getInstance().getProperty("db_account");
         String dbpassword = myconfig.getInstance().getProperty("db_password");

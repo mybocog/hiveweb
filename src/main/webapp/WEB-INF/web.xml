@@ -6,7 +6,7 @@
   <display-name>Archetype Created Web Application</display-name>
     <servlet>
         <servlet-name>getstatus</servlet-name>
-        <servlet-class>getstatusServlet</servlet-class>
+        <servlet-class>getStatusServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>getprocess</servlet-name>

@@ -13,7 +13,7 @@ public class tableinfoServlet extends HttpServlet{
 
     public void doGet( HttpServletRequest rq,HttpServletResponse rp ) throws IOException,ServletException{
         PrintWriter out=rp.getWriter();
-        String username = "test";
+        String username = "t";
         String db = rq.getParameter("db");
         String dburl = myconfig.getInstance().getProperty("hivemeta_db_connection_url");
         String dbusername = myconfig.getInstance().getProperty("hivemeta_db_account");

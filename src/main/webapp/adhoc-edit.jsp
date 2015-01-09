@@ -12,7 +12,7 @@
         </div>
         <div class="col-md-2">
             <div class="btn-group-vertical" style="width: 100%; margin-bottom: 30">
-                <button type="button" id="submitbutton" class="btn btn-lg btn-info" style="" onclick="submitsql()" c>submit</button>
+                <button type="button" id="submitbutton" class="btn btn-lg btn-primary" style="" onclick="submitsql()" c>submit</button>
 
             </div>
             <div class="btn-group-vertical" style="width: 100%">
@@ -21,31 +21,16 @@
         </div>
 </div>
 
-<div id="hiveresult" style="width:100%;height:auto;overflow:auto;margin-top: 30" >
-    <table class="table table-hover table-bordered table-striped">
-    <thead>
-        <tr>
-            <th>567
-            </th>
-        </tr>
-    </thead>
-    <tr>
-        <td>567
-        </td>
-    </tr>
-    <tr>
-        <td>123
-        </td>
-    </tr>
-    </table>
-</div>
-
     <ul id="display" class="list-unstyled">
-        <li>adsfadsfads</li>
-        <li>adsfadsfads</li>
-        <li>adsfadsfads</li>
-        <li>adsfadsfads</li>
+        <li></li>
     </ul>
-
     <div id="divdownload">
     </div>
+
+<div id="hiveresult" style="width:100%;height:auto;overflow:auto;margin-top: 30" >
+<%--    <table class="table table-hover table-bordered table-striped">
+        <thead><tr><th>col</th></tr></thead>
+                <tr><td>value</td></tr>
+    </table>
+--%>
+</div>

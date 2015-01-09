@@ -15,7 +15,7 @@ public class userdata {
         public String jobid2;
         public String para1;
         public String para2;
-        public String status1;
+        public String status1;// init   running  finished
         public String status2;
         public String sql1;
         public String sql2;
@@ -34,10 +34,11 @@ public class userdata {
 
     Map<String, userinfo> userdataset = new HashMap<String, userinfo>();
 
-    public synchronized void clearUser(String username){
-        if(userdataset.containsKey(username)){
-            userdataset.remove(username);
-        }
+    public synchronized void initUser(String username, int i){
+        userdata.getInstance().setUserStatus(username,"init",i);
+        userdata.getInstance().setUsersql(username,"",i);
+        userdata.getInstance().setUserjobid(username,"",i);
+        userdata.getInstance().setUserpara(username,"",i);
     }
 
     public String getUserStatus(String username, int i){

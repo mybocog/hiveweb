@@ -8,7 +8,7 @@ public class getStatusServlet extends HttpServlet{
     public void doGet( HttpServletRequest rq,HttpServletResponse rp ) throws IOException,ServletException{
         PrintWriter out=rp.getWriter();
         int jobno = Integer.parseInt(rq.getParameter("j"));
-        String username="test";
+        String username="t";
 //        String username = (String) rq.getSession().getAttribute("username");
         String status = userdata.getInstance().getUserStatus(username, jobno);
         if(status==null || status.equals("init")){
