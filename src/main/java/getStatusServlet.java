@@ -3,7 +3,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 
 
-public class getStatusServlet extends HttpServlet{
+public class getstatusServlet extends HttpServlet{
 
     public void doGet( HttpServletRequest rq,HttpServletResponse rp ) throws IOException,ServletException{
         PrintWriter out=rp.getWriter();
