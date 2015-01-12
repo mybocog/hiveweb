@@ -6,10 +6,13 @@
   To change this template use File | Settings | File Templates.
 --%>
 <div class="container-fluid">
+    <div class="input-group" style="margin-bottom: 20;">
+        <span class="input-group-addon"><b>DB</b></span>
+        <select id="dbselect" class="form-control" onchange="dbchange(this.value)">
+            <option> </option>
+        </select>
+    </div>
 
-    <select id="dbselect" class="form-control" style="margin-bottom: 20" onchange="dbchange(this.value)">
-        <option> </option>
-    </select>
 
     <div class="panel panel panel-info">
         <div id="db_panel_head" class="panel-heading" style=""><b>null</b></div>

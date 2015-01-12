@@ -2,12 +2,11 @@
 
 .CodeMirror {
   /* Set height, width, borders, and global font properties here */
-  font-family: verdana;
   font-size:25px;
-  height: 210px;
+  height: 280px;
   width: auto;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 8px;
 }
 .CodeMirror-scroll {
   /* Set scrolling behaviour here */
@@ -24,7 +23,7 @@
 }
 
 .CodeMirror-scrollbar-filler, .CodeMirror-gutter-filler {
-  background-color: white; /* The little square between H and V scrollbars */
+  background-color: #ffffff; /* The little square between H and V scrollbars */
 }
 
 /* GUTTER */

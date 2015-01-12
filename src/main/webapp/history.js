@@ -3,6 +3,7 @@
  */
 function preload()
 {
+
     var historytable = document.getElementById("historytable");
     var xmlhttp;
     xmlhttp=new XMLHttpRequest();
