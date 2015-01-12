@@ -12,14 +12,17 @@ function setjobno(n){
     jobno = n
     if(n=="2"){
         str = navigator.userAgent
-        if(str.indexOf("Windows")){
+        if(str.indexOf("Windows")>=0){
             var body = document.getElementById("body")
             body.style.fontFamily="cursive"
             var sqledit = document.getElementById('sqledit')
             sqledit.style.fontFamily="cursive"
         }
-        if(str.indexOf("Mac")){
-
+        if(str.indexOf("Mac")>=0){
+            var body = document.getElementById("body")
+            body.style.fontFamily="Comic Sans MS"
+            var sqledit = document.getElementById('sqledit')
+            sqledit.style.fontFamily="cursive"
         }
     }
 }
