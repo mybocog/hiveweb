@@ -27,9 +27,9 @@
     </div>
     <div>
         <ul class="nav navbar-nav">
-            <li class="active"><a href="adhoc.jsp">AdHoc1</a></li>
+            <li><a href="adhoc.jsp">AdHoc1</a></li>
             <li><a href="adhoc2.jsp">AdHoc2</a></li>
-            <li><a href="history.jsp">History</a></li>
+            <li class="active"><a href="history.jsp">History</a></li>
             <li><a href="killjob.jsp">KillJob</a></li>
             <%--
                         <li><a href="runquery.jsp">RunQuery</a></li>

@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="lib/css/bootstrap.css">
 </head>
 <body>
-<%@include file="nav.jsp"%>
+<%@include file="nav4.jsp"%>
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-3">

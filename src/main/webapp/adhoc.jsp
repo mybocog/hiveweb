@@ -16,7 +16,6 @@
     <link rel="stylesheet" href="lib/css/codemirror.css">
     <link rel="stylesheet" href="lib/css/bootstrap.css">
 </head>
-
 <body id="body" onload="setjobno('1');updatestatus();">
 <%@include file="nav.jsp"%>
 <div class="container-fluid">
