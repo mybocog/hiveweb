@@ -14,8 +14,8 @@
 <body style="background-color: #1abc9c">
 <div style="margin-left: 35%;margin-top: 15%">
     <div style="position: static;float: left;margin-top: 20;margin-right: 20" class="login-icon">
-        <img src="lib/img/icon.png" alt="Welcome to Hiveweb" />
-        <h4>Welcome to <small>Hive Web</small></h4>
+        <img src="lib/img/icon.png" alt="Welcome to Hive" />
+        <h4>Welcome to <small>Hive</small></h4>
     </div>
 
     <form method="post" action="login">

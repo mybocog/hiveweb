@@ -13,10 +13,10 @@
     <script type="text/javascript" src="killjob.js"></script>
     <link rel="stylesheet" href="lib/css/bootstrap.css">
 </head>
-<body>
+<body onload="killedlog()">
 <%@include file="nav4.jsp"%>
 <div class="container-fluid">
-    <div class="row">
+    <div class="row" style="margin-bottom: 100">
         <div class="col-md-3">
             <input class="form-control" id="jobid" placeholder="Please input Job ID" >
             <input type="button" id="kill" class="btn btn-danger" value="kill" onclick="killjobid()" style="margin-top:20; display: none"></button>
@@ -25,6 +25,15 @@
             <input type="button" id="submit" class="btn btn-warning" value="kill" onclick="submitjobid()" ></button>
         </div>
         <div class="col-md-8">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-5">
+        <table id="killedlog" class="table table-hover table-bordered">
+        </table>
+        </div>
+        <div class="col-md-7">
         </div>
     </div>
 </div>

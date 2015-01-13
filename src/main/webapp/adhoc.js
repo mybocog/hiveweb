@@ -208,30 +208,48 @@ function submitsql()
     {
         return this.replace(/(^\s*)|(\s*$)/g, '');
     };
+    String.prototype.removesemicolon = function()
+    {
+        return this.replace(/;/g, '');
+    };
 
     var dbselect = document.getElementById("dbselect");
     db = dbselect.value
 
     var sqledit = document.getElementById("sqledit");
     var sqlstr = editor.getValue();
-    sqlstr=sqlstr.trim();
+    sqlstr=sqlstr.trim().removesemicolon();
     if(sqlstr==""){
         return;
     }
-    if(sqlstr.search(/^\s*test/i)!=-1 || sqlstr.search(/^\s*desc/i)!=-1 || sqlstr.search(/^\s*select/i)!=-1  || sqlstr.search(/^\s*show/i)!=-1)
-    {
+    if(sqlstr.search(/^\s*drop/i)!=-1){
+        if(sqlstr.indexOf(".")>=0){
+            return;
+        }
+        if(sqlstr.indexOf("database")>=0){
+            return;
+        }
+    }
+    if(sqlstr.search(/^\s*alter/i)!=-1){
+        if(sqlstr.indexOf(".")>=0){
+            return;
+        }
+        if(sqlstr.indexOf("database")>=0){
+            return;
+        }
+    }
+    if(sqlstr.search(/^\s*dfs/i)!=-1){
 
     }
-    else
-    {
-        alert("You must input SELECT sql");
-        return;
+    var limit="1"
+    if(sqlstr.search(/^\s*desc/i)!=-1 || sqlstr.search(/^\s*describe/i)!=-1  || sqlstr.search(/^\s*show/i)!=-1){
+        limit="0"
     }
 
     timestamp = new Date().format("yyyyMMddhhmmss");
     var xmlhttp;
     xmlhttp=new XMLHttpRequest();
-    xmlhttp.open("POST","/handlesql?t="+timestamp+"&db="+db+"&j="+jobno+"&rand="+new Date().getTime(),true);
+    xmlhttp.open("POST","/handlesql?li="+limit+"&t="+timestamp+"&db="+db+"&j="+jobno+"&rand="+new Date().getTime(),true);
     xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
     xmlhttp.send("sql="+sqlstr.replace(/%/g,"%25").replace(/\+/g,"%2B"));
     xmlhttp.onreadystatechange=function()

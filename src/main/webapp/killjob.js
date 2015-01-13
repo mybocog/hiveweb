@@ -3,6 +3,25 @@
  */
 var jobid;
 
+function killedlog(){
+    var xmlhttp;
+    xmlhttp=new XMLHttpRequest();
+    xmlhttp.open("GET","/killedlog?&rand="+new Date().getTime(),true);
+    xmlhttp.send();
+    xmlhttp.onreadystatechange=function()
+    {
+        if (xmlhttp.readyState==4 && xmlhttp.status==200 )
+        {
+            str = xmlhttp.responseText;
+            if(str==""){
+                return
+            }
+            var killedlog = document.getElementById("killedlog");
+            killedlog.innerHTML ="<thead><tr><th>Time</th><th>User</th><th>JobID</th></tr></thead>"+str
+        }
+    };
+}
+
 function submitjobid(){
     var jobidedit = document.getElementById("jobid");
     jobid = jobidedit.value

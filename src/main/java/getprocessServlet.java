@@ -91,7 +91,7 @@ public class getprocessServlet extends HttpServlet{
                             out.write(col);
                             out.write("</th>");
                         }
-                        out.write("<thead></tr>");
+                        out.write("</tr><thead>");
                     }
                     else{
                         out.write("<tr>");

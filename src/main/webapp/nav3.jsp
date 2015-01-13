@@ -23,7 +23,7 @@
 
 <nav class="nav navbar-default"  style="margin-bottom: 20;">
     <div class="navbar-header">
-            <h class="navbar-brand">HiveWeb</h>
+            <h class="navbar-brand">Hive</h>
     </div>
     <div>
         <ul class="nav navbar-nav">

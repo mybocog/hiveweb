@@ -9,6 +9,11 @@ public class handlesqlServlet extends HttpServlet{
         String db = rq.getParameter("db");
         int jobno = Integer.parseInt(rq.getParameter("j"));
         String str_time = rq.getParameter("t");
+        String li = rq.getParameter("li");
+        boolean limited = true;
+        if(li.equals("0")){
+            limited=false;
+        }
         String username ="t";
 //        String username = (String) rq.getSession().getAttribute("username");
 //        if(username==null){
@@ -43,16 +48,8 @@ public class handlesqlServlet extends HttpServlet{
         sqlout.write(newsql);
         sqlout.close();
 
-        if(newsql.startsWith("show") || newsql.startsWith("SHOW") || newsql.startsWith("desc") || newsql.startsWith("DESC") )
-        {
-            hiveExe he = new hiveExe(username,str_time,sqlpath,errorpath,resultpath,db,false,jobno);
-            he.start();
-        }
-        else
-        {
-            hiveExe he = new hiveExe(username,str_time,sqlpath,errorpath,resultpath,db,true,jobno);
-            he.start();
-        }
+        hiveExe he = new hiveExe(username,str_time,sqlpath,errorpath,resultpath,db,limited,jobno);
+        he.start();
 
         synchronized(this){
             String logpath=context.getRealPath("/userdata/run.log");

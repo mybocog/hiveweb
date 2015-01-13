@@ -5,6 +5,10 @@
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
     <servlet>
+        <servlet-name>killedlog</servlet-name>
+        <servlet-class>killedlogServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>getstatus</servlet-name>
         <servlet-class>getStatusServlet</servlet-class>
     </servlet>
@@ -53,6 +57,10 @@
         <servlet-class>loginServlet</servlet-class>
     </servlet>
 
+    <servlet-mapping>
+        <servlet-name>killedlog</servlet-name>
+        <url-pattern>/killedlog</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>getstatus</servlet-name>
         <url-pattern>/getstatus</url-pattern>
