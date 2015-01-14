@@ -5,16 +5,19 @@ import java.io.*;
 public class downloadServlet extends HttpServlet{
 
     public void doGet(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
+        String username = (String) request.getSession().getAttribute("username");
+        if(username==null){
+            return;
+        }
         try{
             ServletContext context=getServletContext();
             OutputStream out;
             InputStream in;
-//            String user = (String) request.getSession().getAttribute("username");
-            String user = "t";
+
 
             String str_time = request.getParameter("t");
 
-            String dir="/userdata/"+user+"/";
+            String dir="/userdata/"+username+"/";
 
             in= context.getResourceAsStream(dir+str_time+"_result"+".txt");
             int length=in.available();

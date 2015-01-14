@@ -5,11 +5,12 @@ import java.util.Stack;
 
 public class killedlogServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        PrintWriter out = response.getWriter();
         String username = (String) request.getSession().getAttribute("username");
         if(username==null){
-            response.sendRedirect("index.jsp");
+            out.write("sessionerror");
+            return;
         }
-        PrintWriter out = response.getWriter();
 
         String killlogpath=getServletContext().getRealPath("/userdata/kill.log");
         BufferedReader reader = new BufferedReader(new FileReader(killlogpath));

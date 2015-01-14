@@ -5,7 +5,12 @@ import javax.servlet.http.*;
 
 public class handlesqlServlet extends HttpServlet{
     public void doGet( HttpServletRequest rq,HttpServletResponse rp ) throws IOException,ServletException{
-        PrintWriter out = rp.getWriter();
+        PrintWriter out=rp.getWriter();
+        String username = (String) rq.getSession().getAttribute("username");
+        if(username==null){
+            out.write("sessionerror");
+            return;
+        }
         String db = rq.getParameter("db");
         int jobno = Integer.parseInt(rq.getParameter("j"));
         String str_time = rq.getParameter("t");
@@ -14,11 +19,7 @@ public class handlesqlServlet extends HttpServlet{
         if(li.equals("0")){
             limited=false;
         }
-        String username ="t";
-//        String username = (String) rq.getSession().getAttribute("username");
-//        if(username==null){
-//            rp.sendRedirect("index.jsp");
-//        }
+
         ServletContext context=getServletContext();
         byte[] arrayStr = rq.getParameter("sql").getBytes("iso-8859-1");
         String sql = new String(arrayStr, "UTF-8");

@@ -6,14 +6,21 @@ import javax.servlet.http.HttpServletResponse;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.Statement;
+import java.util.Date;
 
 public class desctableServlet extends HttpServlet{
 
     public void doGet( HttpServletRequest rq,HttpServletResponse rp ) throws IOException,ServletException{
         PrintWriter out=rp.getWriter();
-        String username = "t";
+        String username = (String) rq.getSession().getAttribute("username");
+        if(username==null){
+            out.write("sessionerror");
+            return;
+        }
         String db = rq.getParameter("db");
         String tb = rq.getParameter("tb");
         String dburl = myconfig.getInstance().getProperty("hivemeta_db_connection_url");
@@ -28,7 +35,7 @@ public class desctableServlet extends HttpServlet{
             Class.forName(driver);
             Connection conn = (Connection) DriverManager.getConnection(dburl, dbusername, dbpassword);
             Statement statement = (Statement) conn.createStatement();
-            String _sql = "select * from (select t.TBL_ID from TBLS t join DBS d on t.DB_ID=d.DB_ID where d.NAME='"+db+"' and t.TBL_NAME='"+tb+"' ) tmp join COLUMNS_V2 c on tmp.TBL_ID=c.CD_ID";
+            String _sql = "select * from (select CD_ID from (select t.SD_ID from TBLS t join DBS d on t.DB_ID=d.DB_ID where d.NAME='"+db+"' and t.TBL_NAME='"+tb+"' ) tmp join sds s on tmp.SD_ID=s.SD_ID) tmp2 join COLUMNS_V2 c on tmp2.CD_ID=c.CD_ID order by  integer_idx";
             ResultSet rs = statement.executeQuery(_sql);
             while (rs.next()) {
                 if(!collist.equals("")){
@@ -47,13 +54,18 @@ public class desctableServlet extends HttpServlet{
                 tbltype = rs.getString("TBL_TYPE");
             }
             if(tbltype.equals("MANAGED_TABLE")){
-                rs = statement.executeQuery("select FROM_UNIXTIME(PARAM_VALUE, '%Y-%m-%d %H:%m') as upt from TABLE_PARAMS tp join (select t.TBL_NAME,t.TBL_ID from TBLS t join DBS d on t.DB_ID=d.DB_ID where d.NAME='"+db+"' and t.TBL_NAME='"+tb+"') nt on tp.TBL_ID=nt.TBL_ID where PARAM_KEY=\"transient_lastDdlTime\";");
+                rs = statement.executeQuery("select PARAM_VALUE as upt from TABLE_PARAMS tp join (select t.TBL_NAME,t.TBL_ID from TBLS t join DBS d on t.DB_ID=d.DB_ID where d.NAME='"+db+"' and t.TBL_NAME='"+tb+"') nt on tp.TBL_ID=nt.TBL_ID where PARAM_KEY=\"transient_lastDdlTime\";");
                 if(rs.next()){
-                    tblupt = rs.getString("upt");
+                    SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                    tblupt = df.format(new Date(Long.parseLong(rs.getString("upt"))*1000))+" updated";
                 }
             }
             else{
-                tblupt = "";
+                rs = statement.executeQuery("select max(CREATE_TIME) as upt from (select t.TBL_ID from TBLS t join DBS d on t.DB_ID=d.DB_ID where d.NAME='"+db+"' and t.TBL_NAME='"+tb+"' ) tmp join PARTITIONS p on tmp.TBL_ID=p.TBL_ID");
+                if(rs.next()){
+                    SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+                    tblupt = df.format(new Date(Long.parseLong(rs.getString("upt"))*1000))+" partitioned";
+                }
             }
         }
         catch (ClassNotFoundException e) {

@@ -77,7 +77,7 @@ function tableinfo(db){
             tbs = tblist.split(",")
             var tmphtml = ""
             for(i in tbs){
-                tmphtml += "<a class=\"list-group-item\" onclick=\"desctable('"+db+"','"+tbs[i]+"')\"><b>"+tbs[i]+"</b></a>"
+                tmphtml += "<a style=\"cursor: pointer;\" class=\"list-group-item\" onclick=\"desctable('"+db+"','"+tbs[i]+"')\"><b>"+tbs[i]+"</b></a>"
             }
             var db_panel_list = document.getElementById("db_panel_list");
             db_panel_list.innerHTML=tmphtml
@@ -105,7 +105,7 @@ function desctable(db,tb){
                 var tb_panel_head = document.getElementById("tb_panel_head");
                 tb_panel_head.innerHTML="<b>"+tb+"</b>";
                 var tb_panel_body = document.getElementById("tb_panel_body");
-                tb_panel_body.innerHTML="<p>"+rps[2]+"</p><p>"+rps[3]+" updated</p>";
+                tb_panel_body.innerHTML="<p>"+rps[2]+"</p><p>"+rps[3]+"</p>";
                 var tb_panel_list = document.getElementById("tb_panel_list");
                 tb_panel_list.innerHTML=tmphtml;
             }
@@ -272,6 +272,10 @@ function updatestatus()
     {
         if (xmlhttp.readyState==4 && xmlhttp.status==200 )
         {
+            if(xmlhttp.responseText=="sessionerror"){
+                window.location.href="index.jsp";
+                return
+            }
             var status=xmlhttp.responseText;
             if(status=="init")
             {

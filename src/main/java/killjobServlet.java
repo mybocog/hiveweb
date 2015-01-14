@@ -6,9 +6,11 @@ import java.text.SimpleDateFormat;
 
 public class killjobServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        PrintWriter out = response.getWriter();
         String username = (String) request.getSession().getAttribute("username");
         if(username==null){
-            response.sendRedirect("index.jsp");
+            out.write("sessionerror");
+            return;
         }
         ServletContext context=getServletContext();
 //        PrintWriter out = response.getWriter();

@@ -18,7 +18,7 @@
 </head>
 <body id="body" onload="setjobno('2');updatestatus();">
 <%@include file="nav2.jsp"%>
-<div class="container-fluid">
+<div class="container-fluid" style="margin-top: 70;">
     <div class="row">
         <div class="col-md-3">
             <%@include file="side-left.jsp"%>

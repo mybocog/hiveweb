@@ -7,16 +7,17 @@ import javax.servlet.http.*;
 public class getprocessServlet extends HttpServlet{
     public void doGet( HttpServletRequest rq,HttpServletResponse rp ) throws IOException,ServletException{
         PrintWriter out=rp.getWriter();
+        String username = (String) rq.getSession().getAttribute("username");
+        if(username==null){
+            out.write("sessionerror");
+            return;
+        }
         ServletContext context=getServletContext();
         String gettype = rq.getParameter("g");
         int jobno = Integer.parseInt(rq.getParameter("j"));
         int totallinenum = Integer.parseInt(rq.getParameter("l"));
         int max_result_line_num = 1000;
-        String username ="t";
-        //String username = (String) rq.getSession().getAttribute("username");
-        //if(username==null){
-        //    rp.sendRedirect("login.html");
-        //}
+
         String dir="/userdata/"+username+"/";
         String status = userdata.getInstance().getUserStatus(username, jobno);
         String parameter = userdata.getInstance().getUserpara(username, jobno);

@@ -10,12 +10,13 @@ import javax.servlet.http.HttpServletResponse;
 
 public class historyServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        PrintWriter out = response.getWriter();
         String username = (String) request.getSession().getAttribute("username");
         if(username==null){
-            response.sendRedirect("/index.jsp");
+            out.write("sessionerror");
             return;
         }
-        PrintWriter out = response.getWriter();
+
         String historylogpath=getServletContext().getRealPath("/userdata/"+username+"/history.log");
         BufferedReader reader = new BufferedReader(new FileReader(historylogpath));
         String line;
@@ -37,26 +38,6 @@ public class historyServlet extends HttpServlet {
             out.write("</td>");
             out.write("</tr>");
         }
-/*
-        Stack<String> ss = new Stack<String>();
-        while((line = reader.readLine()) != null){
-            ss.push(line);
-        }
 
-        while (!ss.empty()){
-            String ele = ss.pop();
-            String col [] = ele.split("\t");
-            out.write("<tr>");
-            out.write("<td>");
-            SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            String ds = df.format(col[0]);
-            out.write(col[1]);
-            out.write("</td>");
-            out.write("<td>");
-            out.write("<a href=\"/download?&t=\""+col[0]+"\">"+ds+" download</a>");
-            out.write("</td>");
-            out.write("</tr>");
-        }
-        */
     }
 }

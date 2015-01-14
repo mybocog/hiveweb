@@ -15,7 +15,7 @@
 </head>
 <body onload="preload()">
 <%@include file="nav3.jsp"%>
-<div class="container-fluid">
+<div class="container-fluid" style="margin-top: 70;">
     <div class="row">
         <div class="col-md-12">
             <table id="historytable" class="table table-hover table-striped">

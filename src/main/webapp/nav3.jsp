@@ -21,7 +21,7 @@
     }
 </style>
 
-<nav class="nav navbar-default"  style="margin-bottom: 20;">
+<nav class="nav navbar-default navbar-fixed-top"  style="margin-bottom: 20;">
     <div class="navbar-header">
             <h class="navbar-brand">Hive</h>
     </div>

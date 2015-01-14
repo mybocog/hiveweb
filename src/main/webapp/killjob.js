@@ -12,6 +12,10 @@ function killedlog(){
     {
         if (xmlhttp.readyState==4 && xmlhttp.status==200 )
         {
+            if(xmlhttp.responseText=="sessionerror"){
+                window.location.href="index.jsp";
+                return
+            }
             str = xmlhttp.responseText;
             if(str==""){
                 return

@@ -15,7 +15,7 @@
 </head>
 <body onload="killedlog()">
 <%@include file="nav4.jsp"%>
-<div class="container-fluid">
+<div class="container-fluid" style="margin-top: 100;">
     <div class="row" style="margin-bottom: 100">
         <div class="col-md-3">
             <input class="form-control" id="jobid" placeholder="Please input Job ID" >
