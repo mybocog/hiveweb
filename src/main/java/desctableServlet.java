@@ -7,10 +7,10 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
-
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.Statement;
 import java.util.Date;
+
 
 public class desctableServlet extends HttpServlet{
 
@@ -63,8 +63,22 @@ public class desctableServlet extends HttpServlet{
             else{
                 rs = statement.executeQuery("select max(CREATE_TIME) as upt from (select t.TBL_ID from TBLS t join DBS d on t.DB_ID=d.DB_ID where d.NAME='"+db+"' and t.TBL_NAME='"+tb+"' ) tmp join PARTITIONS p on tmp.TBL_ID=p.TBL_ID");
                 if(rs.next()){
-                    SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-                    tblupt = df.format(new Date(Long.parseLong(rs.getString("upt"))*1000))+" partitioned";
+                    long l = (long)rs.getInt("upt")*1000;
+                    if(l>0){
+                        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+                        tblupt = df.format(new Date(l))+" partitioned";
+                    }
+                    else{
+                        String basedb = myconfig.getInstance().getProperty("base_hive_db");
+                        rs = statement.executeQuery("select PARAM_VALUE as upt from TABLE_PARAMS tp join (select t.TBL_NAME,t.TBL_ID from TBLS t join DBS d on t.DB_ID=d.DB_ID where d.NAME='"+basedb+"' and t.TBL_NAME='"+tb+"') nt on tp.TBL_ID=nt.TBL_ID where PARAM_KEY=\"transient_lastDdlTime\";");
+                        if(rs.next()){
+                            SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                            tblupt = df.format(new Date(Long.parseLong(rs.getString("upt"))*1000))+" updated";
+                        }
+                        else{
+                            tblupt="";
+                        }
+                    }
                 }
             }
         }
