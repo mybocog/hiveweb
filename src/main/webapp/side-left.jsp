@@ -15,20 +15,20 @@
 
 
     <div class="panel panel panel-info">
-        <div id="db_panel_head" class="panel-heading" style=""><b>null</b></div>
+        <div id="db_panel_head" class="panel-heading" style=""><b></b></div>
         <div id="db_panel_list" class="list-group" style="max-height: 400; overflow-y: auto">
-            <a href="#" class="list-group-item" onclick="desctable('a')"><span class="badge"></span><b>null</b></a>
+            <a href="#" class="list-group-item" onclick="desctable('a')"><span class="badge"></span><b></b></a>
         </div>
     </div>
 
     <div class="panel panel panel-info">
-        <div id="tb_panel_head" class="panel-heading" style=""><b>null</b></div>
+        <div id="tb_panel_head" class="panel-heading" style=""><b></b></div>
         <div id="tb_panel_body" class="panel-body">
-            <p>null</p>
+            <p></p>
         </div>
 
         <ul id="tb_panel_list" class="list-group"  style="max-height: 400; overflow-y: auto">
-            <li class="list-group-item"><span class="badge">type</span><b>null</b></li>
+            <li class="list-group-item"><span class="badge"></span><b></b></li>
         </ul>
     </div>
 </div>

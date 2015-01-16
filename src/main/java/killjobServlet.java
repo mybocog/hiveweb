@@ -14,7 +14,7 @@ public class killjobServlet extends HttpServlet {
         }
         ServletContext context=getServletContext();
 //        PrintWriter out = response.getWriter();
-        String jobid = request.getParameter("jobid");
+        String jobid = request.getParameter("j");
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         synchronized(this){
             String logpath=context.getRealPath("/userdata/kill.log");

@@ -22,6 +22,9 @@ public class killedlogServlet extends HttpServlet {
         while (!ss.empty()){
             String ele = ss.pop();
             String col [] = ele.split("\t");
+            if(col.length<3){
+                continue;
+            }
             out.write("<tr>");
             out.write("<td>");
             out.write(col[0]);

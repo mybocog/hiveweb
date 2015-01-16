@@ -19,16 +19,20 @@ public class userdata {
         public String status2;
         public String sql1;
         public String sql2;
+        public int linenum1;
+        public int linenum2;
         public userinfo(String username){
             account = username;
             jobid1="";
             jobid2="";
             para1="";
             para2="";
-            status1="";
-            status2="";
+            status1="init";
+            status2="init";
             sql1="";
             sql2="";
+            linenum1=0;
+            linenum2=0;
         }
     }
 
@@ -39,6 +43,19 @@ public class userdata {
         userdata.getInstance().setUsersql(username,"",i);
         userdata.getInstance().setUserjobid(username,"",i);
         userdata.getInstance().setUserpara(username,"",i);
+        userdata.getInstance().setUserlinenum(username,0,i);
+    }
+
+    public int getUserlinenum(String username, int i){
+        if(userdataset.containsKey(username)){
+            if(i==1){
+                return userdataset.get(username).linenum1;
+            }
+            else if(i==2){
+                return userdataset.get(username).linenum2;
+            }
+        }
+        return 0;
     }
 
     public String getUserStatus(String username, int i){
@@ -87,6 +104,29 @@ public class userdata {
             }
         }
         return null;
+    }
+
+    public synchronized void setUserlinenum(String username, int ln, int i){
+        if(userdataset.containsKey(username)){
+            userinfo u = userdataset.get(username);
+            if(i==1){
+                u.linenum1=ln;
+            }
+            else if(i==2){
+                u.linenum2=ln;
+            }
+            userdataset.put(username, u);
+        }
+        else {
+            userinfo u = new userinfo(username);
+            if(i==1){
+                u.linenum1=ln;
+            }
+            else if(i==2){
+                u.linenum2=ln;
+            }
+            userdataset.put(username, u);
+        }
     }
 
     public synchronized void setUserStatus(String username, String status, int i){

@@ -21,7 +21,7 @@ function killedlog(){
                 return
             }
             var killedlog = document.getElementById("killedlog");
-            killedlog.innerHTML ="<thead><tr><th>Time</th><th>User</th><th>JobID</th></tr></thead>"+str
+            killedlog.innerHTML ="<thead><tr><th>Time</th><th>Killer</th><th>JobID</th></tr></thead>"+str
         }
     };
 }
@@ -55,7 +55,7 @@ function killjobid(){
 
     var xmlhttp;
     xmlhttp=new XMLHttpRequest();
-    xmlhttp.open("GET","/killjob?&jobid="+jobid+"&rand="+new Date().getTime(),true);
+    xmlhttp.open("GET","/killjob?&j="+jobid+"&rand="+new Date().getTime(),true);
     xmlhttp.send();
     xmlhttp.onreadystatechange=function()
     {

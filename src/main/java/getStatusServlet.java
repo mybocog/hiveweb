@@ -15,7 +15,7 @@ public class getStatusServlet extends HttpServlet{
 
         int jobno = Integer.parseInt(rq.getParameter("j"));
         String status = userdata.getInstance().getUserStatus(username, jobno);
-        if(status==null || status.equals("init")){
+        if(status==null || status.equals("") || status.equals("init")){
             out.write("init");
             return;
         }

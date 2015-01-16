@@ -12,20 +12,20 @@
         </div>
         <div class="col-md-2">
             <div class="btn-group-vertical" style="width: 100%; margin-bottom: 30">
-                <button type="button" id="submitbutton" class="btn btn-lg btn-info" style="" onclick="submitsql()" c>submit</button>
-
+                <button type="button" id="submitbutton" class="btn btn-lg btn-info" style="" onclick="submitsql()">submit</button>
             </div>
             <div class="btn-group-vertical" style="width: 100%">
-                <button type="button" class="btn btn-lg btn-danger" style="">stop</button>
+                <button type="button" id="stopbutton" class="btn btn-lg btn-danger" style="" onclick="stopjob()">stop</button>
             </div>
         </div>
 </div>
 
-    <ul id="display" class="list-unstyled">
-        <li></li>
-    </ul>
-    <div id="divdownload">
-    </div>
+<div id="divdownload" style="margin-top: 30">
+</div>
+
+<ul id="display" class="list-unstyled" style="margin-top: 30">
+    <li></li>
+</ul>
 
 <div id="hiveresult" style="width:100%;height:auto;overflow:auto;margin-top: 30" >
 <%--    <table class="table table-hover table-bordered table-striped">

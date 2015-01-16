@@ -16,7 +16,7 @@ public class getprocessServlet extends HttpServlet{
         String gettype = rq.getParameter("g");
         int jobno = Integer.parseInt(rq.getParameter("j"));
         int totallinenum = Integer.parseInt(rq.getParameter("l"));
-        int max_result_line_num = 1000;
+        int max_result_line_num = Integer.parseInt(myconfig.getInstance().getProperty("result_line_num"));
 
         String dir="/userdata/"+username+"/";
         String status = userdata.getInstance().getUserStatus(username, jobno);

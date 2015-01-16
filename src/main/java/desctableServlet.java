@@ -35,7 +35,7 @@ public class desctableServlet extends HttpServlet{
             Class.forName(driver);
             Connection conn = (Connection) DriverManager.getConnection(dburl, dbusername, dbpassword);
             Statement statement = (Statement) conn.createStatement();
-            String _sql = "select * from (select CD_ID from (select t.SD_ID from TBLS t join DBS d on t.DB_ID=d.DB_ID where d.NAME='"+db+"' and t.TBL_NAME='"+tb+"' ) tmp join sds s on tmp.SD_ID=s.SD_ID) tmp2 join COLUMNS_V2 c on tmp2.CD_ID=c.CD_ID order by  integer_idx";
+            String _sql = "select * from (select CD_ID from (select t.SD_ID from TBLS t join DBS d on t.DB_ID=d.DB_ID where d.NAME='"+db+"' and t.TBL_NAME='"+tb+"' ) tmp join SDS s on tmp.SD_ID=s.SD_ID) tmp2 join COLUMNS_V2 c on tmp2.CD_ID=c.CD_ID order by  integer_idx";
             ResultSet rs = statement.executeQuery(_sql);
             while (rs.next()) {
                 if(!collist.equals("")){

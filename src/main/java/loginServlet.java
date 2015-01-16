@@ -37,7 +37,7 @@ public class loginServlet extends HttpServlet {
             if(rs.next()){
                 if(rs.getString("password").equals(md5pwd)){
                     String userdir=getServletContext().getRealPath("/userdata/"+username);
-//                    Process process = Runtime.getRuntime().exec(new String[]{"/bin/sh","-c","mkdir -p "+userdir},null,null);
+                    Process process = Runtime.getRuntime().exec(new String[]{"/bin/sh","-c","mkdir -p "+userdir},null,null);
                     request.getSession().setMaxInactiveInterval(-1);
                     request.getSession().setAttribute("username", username);
                     response.sendRedirect("adhoc.jsp");
