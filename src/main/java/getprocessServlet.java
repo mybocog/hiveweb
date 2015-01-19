@@ -25,7 +25,15 @@ public class getprocessServlet extends HttpServlet{
             BufferedReader reader;
             if(gettype.equals("e")){
                 if(status=="finished"){
-                    out.write("finished");
+                    int ln = userdata.getInstance().getUserlinenum(username,jobno);
+                    String db = userdata.getInstance().getUserdb(username,jobno);
+                    userdata.getInstance().setUserdb(username,"",jobno);
+                    int maxln = myconfig.getInstance().getMaxline(username,db);
+                    String flag = "s";
+                    if(ln>=maxln){
+                        flag="b";
+                    }
+                    out.write("finished,"+String.valueOf(ln)+","+String.valueOf(maxln)+","+flag);
                     return;
                 }
                 else if(status=="error"){

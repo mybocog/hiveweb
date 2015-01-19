@@ -11,6 +11,7 @@ class hiveExe extends Thread {
     String sqlpath=null;
     String errorpath=null;
     String resultpath = null;
+    String db = null;
     int result_max_line=0;
     int jobno=1;
 
@@ -21,6 +22,7 @@ class hiveExe extends Thread {
         this.errorpath=ep;
         this.resultpath=rp;
         this.jobno=jobno;
+        this.db=db;
         if(limit) {
             result_max_line = myconfig.getInstance().getMaxline(username, db) + 1;
             if(result_max_line<=0){
@@ -38,6 +40,7 @@ class hiveExe extends Thread {
             process = Runtime.getRuntime().exec(new String[]{"/bin/sh","-c","hive -f "+sqlpath+" 2> "+errorpath},null,null);
             userdata.getInstance().setUserStatus(username, "running", jobno);
             userdata.getInstance().setUserpara(username, para, jobno);
+            userdata.getInstance().setUserdb(username,db,jobno);
             PrintWriter resultout = new PrintWriter(new BufferedWriter(new FileWriter(resultpath)));
             InputStreamReader inputstream = new InputStreamReader(process.getInputStream());
             LineNumberReader input = new LineNumberReader(inputstream);
@@ -52,7 +55,7 @@ class hiveExe extends Thread {
             if(i>0){
                 userdata.getInstance().setUserStatus(username, "finished", jobno);
                 userdata.getInstance().setUserjobid(username, "", jobno);
-                userdata.getInstance().setUserlinenum(username,i,jobno);
+                userdata.getInstance().setUserlinenum(username,i-1,jobno);
             }
             else{
                 userdata.getInstance().setUserStatus(username, "error", jobno);

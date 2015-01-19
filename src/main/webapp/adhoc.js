@@ -151,10 +151,18 @@ function getprocess()
         if (xmlhttp.readyState==4 && xmlhttp.status==200 )
         {
             var str = xmlhttp.responseText;
-            if(gettype=="e" && str=="finished")
+            if(gettype=="e" && str.substr(0,8)=="finished")
             {
                 leaverunning();
                 enterfinished(timestamp);
+                var resulttip = document.getElementById("resulttip");
+                s = str.split(",")
+                if(s[3]=="s"){
+                    resulttip.innerHTML="<p style='color: green'>The result has a total of "+s[1]+" lines</p>";
+                }
+                else{
+                    resulttip.innerHTML="<p style='color: red'>You only got "+s[1]+" lines</p>";
+                }
                 return;
             }
             if(gettype=="e" && str=="error")
@@ -190,9 +198,11 @@ function enterrunning(para)
     var submitbutton = document.getElementById("submitbutton");
     var divdownload = document.getElementById("divdownload");
     var hiveresult = document.getElementById("hiveresult");
+    var resulttip = document.getElementById("resulttip");
     submitbutton.disabled="disabled";
     divdownload.innerHTML="";
     hiveresult.innerHTML="";
+    resulttip.innerHTML=""
     gettype="e";
     intvid= setInterval(getprocess,1000);
 }

@@ -20,6 +20,9 @@
         </div>
 </div>
 
+<div id="resulttip" style="margin-top: 30">
+</div>
+
 <div id="divdownload" style="margin-top: 30">
 </div>
 

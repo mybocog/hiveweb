@@ -44,7 +44,7 @@ public class myconfig {
             Class.forName(driver);
             Connection conn = (Connection) DriverManager.getConnection(dburl, dbusername, dbpassword);
             Statement statement = (Statement) conn.createStatement();
-            String _sql = "select maxline from dbpriv where account='"+username+"'";
+            String _sql = "select maxline from dbpriv where account='"+username+"' and db='"+db+"'";
             ResultSet rs = statement.executeQuery(_sql);
             if(rs.next()){
                 maxline = rs.getInt("maxline");

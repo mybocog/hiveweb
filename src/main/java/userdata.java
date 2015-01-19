@@ -21,6 +21,8 @@ public class userdata {
         public String sql2;
         public int linenum1;
         public int linenum2;
+        public String db1;
+        public String db2;
         public userinfo(String username){
             account = username;
             jobid1="";
@@ -33,6 +35,8 @@ public class userdata {
             sql2="";
             linenum1=0;
             linenum2=0;
+            db1="";
+            db2="";
         }
     }
 
@@ -44,6 +48,7 @@ public class userdata {
         userdata.getInstance().setUserjobid(username,"",i);
         userdata.getInstance().setUserpara(username,"",i);
         userdata.getInstance().setUserlinenum(username,0,i);
+        userdata.getInstance().setUserdb(username,"",i);
     }
 
     public int getUserlinenum(String username, int i){
@@ -56,6 +61,18 @@ public class userdata {
             }
         }
         return 0;
+    }
+
+    public String getUserdb(String username, int i){
+        if(userdataset.containsKey(username)){
+            if(i==1){
+                return userdataset.get(username).db1;
+            }
+            else if(i==2){
+                return userdataset.get(username).db2;
+            }
+        }
+        return null;
     }
 
     public String getUserStatus(String username, int i){
@@ -124,6 +141,29 @@ public class userdata {
             }
             else if(i==2){
                 u.linenum2=ln;
+            }
+            userdataset.put(username, u);
+        }
+    }
+
+    public synchronized void setUserdb(String username, String db, int i){
+        if(userdataset.containsKey(username)){
+            userinfo u = userdataset.get(username);
+            if(i==1){
+                u.db1=db;
+            }
+            else if(i==2){
+                u.db2=db;
+            }
+            userdataset.put(username, u);
+        }
+        else {
+            userinfo u = new userinfo(username);
+            if(i==1){
+                u.db1=db;
+            }
+            else if(i==2){
+                u.db2=db;
             }
             userdataset.put(username, u);
         }
