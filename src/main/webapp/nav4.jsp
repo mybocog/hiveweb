@@ -32,7 +32,6 @@
             <li><a href="history.jsp">History</a></li>
             <li  class="active"><a href="killjob.jsp">KillJob</a></li>
             <%--
-                        <li><a href="runquery.jsp">RunQuery</a></li>
                         <li><a href="#" target="_blank">JobMonitor</a></li>
             --%>
         </ul>

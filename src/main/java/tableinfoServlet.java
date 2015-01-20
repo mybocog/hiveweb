@@ -40,11 +40,11 @@ public class tableinfoServlet extends HttpServlet{
         }
         catch (ClassNotFoundException e) {
             // TODO Auto-generated catch block
-            tblist = "null";
-            e.printStackTrace();
+            tblist = "error";
+//            e.printStackTrace();
         } catch (SQLException e) {
             // TODO Auto-generated catch block
-            tblist = "null";
+            tblist = "error";
 //            e.printStackTrace();
         }
         if(tblist.equals("")){

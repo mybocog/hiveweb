@@ -32,7 +32,7 @@ public class handlesqlServlet extends HttpServlet{
             queue_name="default";
         }
 
-        //make three files: 1 hivesql  2 error stream  3 input stream
+        //create three files: 1 hivesql  2 error stream  3 input stream
         String dir="/userdata/"+username+"/";
         String sqlpath=context.getRealPath(dir+str_time+"_sql"+".q");
         String errorpath=context.getRealPath(dir+str_time+"_error"+".txt");

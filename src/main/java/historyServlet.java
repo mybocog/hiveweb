@@ -26,7 +26,7 @@ public class historyServlet extends HttpServlet {
         }
         while (!ss.empty()){
             String ele = ss.pop();
-            String col [] = ele.split("\t");
+            String col [] = ele.split("\\t");
             out.write("<tr>");
             out.write("<td>");
             out.write(col[1]);
@@ -34,7 +34,7 @@ public class historyServlet extends HttpServlet {
             out.write("<td>");
             String ds=col[0].substring(0,4)+"-"+col[0].substring(4,6)+"-"+col[0].substring(6,8)+" "+col[0].substring(8,10)
                     +":"+col[0].substring(10,12)+":"+col[0].substring(12,14);
-            out.write("<a href=\"/download?&t=\""+col[0]+"\">"+ds+" download</a>");
+            out.write("<a href=\"/download?&t="+col[0]+"\">"+ds+" download</a>");
             out.write("</td>");
             out.write("</tr>");
         }

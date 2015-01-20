@@ -15,7 +15,7 @@ public class userdata {
         public String jobid2;
         public String para1;
         public String para2;
-        public String status1;// init   running  finished
+        public String status1;// init   running  finished error
         public String status2;
         public String sql1;
         public String sql2;

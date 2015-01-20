@@ -7,6 +7,7 @@ var gettype;
 var editor;
 var jobno;
 var processline=20;
+var resultline=30;
 
 function setjobno(n){
     jobno = n
@@ -45,6 +46,10 @@ function dbinfo(){
     {
         if (xmlhttp.readyState==4 && xmlhttp.status==200 )
         {
+            if(xmlhttp.responseText=="sessionerror"){
+                window.location.href="index.jsp";
+                return
+            }
             db1st=""
             dblist = xmlhttp.responseText;
             dbs = dblist.split(",")
@@ -74,6 +79,10 @@ function tableinfo(db){
     {
         if (xmlhttp.readyState==4 && xmlhttp.status==200 )
         {
+            if(xmlhttp.responseText=="sessionerror"){
+                window.location.href="index.jsp";
+                return
+            }
             tblist = xmlhttp.responseText;
             tbs = tblist.split(",")
             var tmphtml = ""
@@ -99,6 +108,10 @@ function desctable(db,tb){
         {
             if (xmlhttp.readyState==4 && xmlhttp.status==200 )
             {
+                if(xmlhttp.responseText=="sessionerror"){
+                    window.location.href="index.jsp";
+                    return
+                }
                 rp = xmlhttp.responseText;
                 rps = rp.split(";")
                 cols = rps[0].split(",")
@@ -144,7 +157,7 @@ function getprocess()
 {
     var xmlhttp;
     xmlhttp=new XMLHttpRequest();
-    xmlhttp.open("GET","/getprocess?&g="+gettype+"&j="+jobno+"&l="+processline+"&rand="+new Date().getTime(),true);
+    xmlhttp.open("GET","/getprocess?&g="+gettype+"&j="+jobno+"&l="+processline+"&rl="+resultline+"&rand="+new Date().getTime(),true);
     xmlhttp.send();
     xmlhttp.onreadystatechange=function()
     {
@@ -254,7 +267,7 @@ function submitsql()
         }
     }
     if(sqlstr.search(/^\s*dfs/i)!=-1){
-
+        return
     }
     var limit="1"
     if(sqlstr.search(/^\s*desc/i)!=-1 || sqlstr.search(/^\s*describe/i)!=-1  || sqlstr.search(/^\s*show/i)!=-1){
@@ -309,6 +322,7 @@ function updatestatus()
             else if(words[0]=="finished")
             {
                 enterfinished(words[1]);
+                return
             }
         }
     };
@@ -336,7 +350,7 @@ function stopjob()
                 divdownload.innerHTML="<p style='color: #ff0000'>Stop: Cannot find job id</p>"
                 return;
             }
-            divdownload.innerHTML="<p style='color: #ff0000'>Stop: Cannot find job id</p>";
+            divdownload.innerHTML="<p style='color: #ff0000'>"+str+"</p>";
         }
     };
 }

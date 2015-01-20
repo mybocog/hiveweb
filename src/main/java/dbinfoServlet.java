@@ -39,11 +39,11 @@ public class dbinfoServlet extends HttpServlet{
         }
         catch (ClassNotFoundException e) {
             // TODO Auto-generated catch block
-            dblist = "null";
-            e.printStackTrace();
+            dblist = "error";
+            //e.printStackTrace();
         } catch (SQLException e) {
             // TODO Auto-generated catch block
-            dblist = "null";
+            dblist = "error";
 //            e.printStackTrace();
         }
         if(dblist.equals("")){

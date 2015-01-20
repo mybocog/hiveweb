@@ -84,17 +84,17 @@ public class desctableServlet extends HttpServlet{
         }
         catch (ClassNotFoundException e) {
             // TODO Auto-generated catch block
-            collist = "null";
-            typelist ="null";
-            tbltype ="null";
-            tblupt ="null";
+            collist = "error";
+            typelist ="error";
+            tbltype ="error";
+            tblupt ="error";
             e.printStackTrace();
         } catch (SQLException e) {
             // TODO Auto-generated catch block
-            collist = "null";
-            typelist ="null";
-            tbltype ="null";
-            tblupt ="null";
+            collist = "error";
+            typelist ="error";
+            tbltype ="error";
+            tblupt ="error";
 //            e.printStackTrace();
         }
         if(collist.equals("")){

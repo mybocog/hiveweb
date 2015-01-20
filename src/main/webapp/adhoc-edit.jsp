@@ -20,17 +20,17 @@
         </div>
 </div>
 
-<div id="resulttip" style="margin-top: 30">
+<div id="resulttip" style="margin-top: 15">
 </div>
 
-<div id="divdownload" style="margin-top: 30">
+<div id="divdownload" style="margin-top: 15">
 </div>
 
-<ul id="display" class="list-unstyled" style="margin-top: 30">
+<ul id="display" class="list-unstyled" style="margin-top: 15">
     <li></li>
 </ul>
 
-<div id="hiveresult" style="width:100%;height:auto;overflow:auto;margin-top: 30" >
+<div id="hiveresult" style="width:100%;height:auto;overflow:auto;margin-top: 15" >
 <%--    <table class="table table-hover table-bordered table-striped">
         <thead><tr><th>col</th></tr></thead>
                 <tr><td>value</td></tr>
