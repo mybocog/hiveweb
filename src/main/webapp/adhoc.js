@@ -6,8 +6,8 @@ var timestamp;
 var gettype;
 var editor;
 var jobno;
-var processline=20;
-var resultline=30;
+var processline=15;
+var resultline=20;
 
 function setjobno(n){
     jobno = n
@@ -240,31 +240,25 @@ function submitsql()
     {
         return this.replace(/;/g, '');
     };
+    String.prototype.removetab = function()
+    {
+        return this.replace(/\t/g, ' ');
+    };
 
     var dbselect = document.getElementById("dbselect");
     db = dbselect.value
 
     var sqledit = document.getElementById("sqledit");
     var sqlstr = editor.getValue();
-    sqlstr=sqlstr.trim().removesemicolon();
+    sqlstr=sqlstr.trim().removesemicolon().removetab();
     if(sqlstr==""){
         return;
     }
     if(sqlstr.search(/^\s*drop/i)!=-1){
-        if(sqlstr.indexOf(".")>=0){
-            return;
-        }
-        if(sqlstr.indexOf("database")>=0){
-            return;
-        }
+        return;
     }
     if(sqlstr.search(/^\s*alter/i)!=-1){
-        if(sqlstr.indexOf(".")>=0){
-            return;
-        }
-        if(sqlstr.indexOf("database")>=0){
-            return;
-        }
+        return;
     }
     if(sqlstr.search(/^\s*dfs/i)!=-1){
         return
@@ -314,7 +308,7 @@ function updatestatus()
 
             var words = status.split(";");
             editor.setValue(words[2]);
-            if(words[0]=="running")
+            if(words[0]=="running" || words[0]=="error")
             {
                 enterrunning(words[1]);
                 return;

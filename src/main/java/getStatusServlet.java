@@ -21,6 +21,7 @@ public class getStatusServlet extends HttpServlet{
         }
         String parameter = userdata.getInstance().getUserpara(username, jobno);
         String sql = userdata.getInstance().getUsersql(username, jobno);
-        out.write(status+";"+parameter+";"+sql);
+        String tmp = new String(sql.getBytes("UTF-8"),"ISO-8859-1");
+        out.write(status+";"+parameter+";"+tmp);
     }
 }
