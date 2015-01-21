@@ -14,7 +14,7 @@
 <body style="background-color: #46b8da">
 <div style="margin-left: 35%;margin-top: 15%">
     <div style="position: static;float: left;margin-top: 20;margin-right: 20" class="login-icon">
-        <img src="lib/img/icon.png" alt="Welcome to Hive" />
+        <img src="lib/img/bee.png" alt="Welcome to Hive" />
         <h4>Welcome to <small>Hive</small></h4>
     </div>
 
