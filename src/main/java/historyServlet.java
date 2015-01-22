@@ -13,7 +13,6 @@ public class historyServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
         String username = (String) request.getSession().getAttribute("username");
         if(username==null){
-            out.write("sessionerror");
             return;
         }
 

@@ -17,7 +17,6 @@ import com.mysql.jdbc.Statement;
 public class loginServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        PrintWriter out = response.getWriter();
         String username = request.getParameter("username");
         String password = request.getParameter("password");
 
@@ -43,7 +42,7 @@ public class loginServlet extends HttpServlet {
                     }
                     request.getSession().setMaxInactiveInterval(-1);
                     request.getSession().setAttribute("username", username);
-                    response.sendRedirect("adhoc.jsp");
+                    response.sendRedirect("adhoc");
                     return;
                 }
             }
@@ -58,8 +57,7 @@ public class loginServlet extends HttpServlet {
             //e.printStackTrace();
         }
 //        }
-        response.sendRedirect("index.jsp");
-//        out.write("wrong username or password");  
+        response.sendRedirect("index");
 
     }
 

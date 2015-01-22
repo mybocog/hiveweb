@@ -15,7 +15,6 @@ public class dbinfoServlet extends HttpServlet{
         PrintWriter out=rp.getWriter();
         String username = (String) rq.getSession().getAttribute("username");
         if(username==null){
-            out.write("sessionerror");
             return;
         }
         String dburl = myconfig.getInstance().getProperty("db_connection_url");

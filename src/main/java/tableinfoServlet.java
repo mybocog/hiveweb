@@ -15,7 +15,6 @@ public class tableinfoServlet extends HttpServlet{
         PrintWriter out=rp.getWriter();
         String username = (String) rq.getSession().getAttribute("username");
         if(username==null){
-            out.write("sessionerror");
             return;
         }
         String db = rq.getParameter("db");

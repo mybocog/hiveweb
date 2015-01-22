@@ -8,13 +8,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <link rel="stylesheet" href="lib/css/bootstrap.css">
-    <link rel="stylesheet" href="lib/css/flat-ui.css">
+    <link rel="stylesheet" href="../lib/css/bootstrap.css">
+    <link rel="stylesheet" href="../lib/css/flat-ui.css">
 </head>
 <body style="background-color: #46b8da">
 <div style="margin-left: 35%;margin-top: 15%">
     <div style="position: static;float: left;margin-top: 20;margin-right: 20" class="login-icon">
-        <img src="lib/img/bee.png" alt="Welcome to Hive" />
+        <img src="../lib/img/bee.png" alt="Welcome to Hive" />
         <h4>Welcome to <small>Hive</small></h4>
     </div>
 
@@ -31,7 +31,7 @@
             </div>
 
             <button type="submit" class="btn btn-info btn-lg btn-block">Log in</button>
-            <a class="login-link" href="resetpwd.jsp">Reset Password</a>
+            <a class="login-link" href="rpd">Reset Password</a>
         </div>
     </form>
 </div>

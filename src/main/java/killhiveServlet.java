@@ -9,7 +9,6 @@ public class killhiveServlet extends HttpServlet{
         PrintWriter out=rp.getWriter();
         String username = (String) rq.getSession().getAttribute("username");
         if(username==null){
-            out.write("sessionerror");
             return;
         }
         int jobno = Integer.parseInt(rq.getParameter("j"));

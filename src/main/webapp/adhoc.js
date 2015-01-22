@@ -46,10 +46,6 @@ function dbinfo(){
     {
         if (xmlhttp.readyState==4 && xmlhttp.status==200 )
         {
-            if(xmlhttp.responseText=="sessionerror"){
-                window.location.href="index.jsp";
-                return
-            }
             db1st=""
             dblist = xmlhttp.responseText;
             dbs = dblist.split(",")
@@ -79,10 +75,6 @@ function tableinfo(db){
     {
         if (xmlhttp.readyState==4 && xmlhttp.status==200 )
         {
-            if(xmlhttp.responseText=="sessionerror"){
-                window.location.href="index.jsp";
-                return
-            }
             tblist = xmlhttp.responseText;
             tbs = tblist.split(",")
             var tmphtml = ""
@@ -108,10 +100,6 @@ function desctable(db,tb){
         {
             if (xmlhttp.readyState==4 && xmlhttp.status==200 )
             {
-                if(xmlhttp.responseText=="sessionerror"){
-                    window.location.href="index.jsp";
-                    return
-                }
                 rp = xmlhttp.responseText;
                 rps = rp.split(";")
                 cols = rps[0].split(",")
@@ -296,10 +284,6 @@ function updatestatus()
     {
         if (xmlhttp.readyState==4 && xmlhttp.status==200 )
         {
-            if(xmlhttp.responseText=="sessionerror"){
-                window.location.href="index.jsp";
-                return
-            }
             var status=xmlhttp.responseText;
             if(status=="init")
             {
