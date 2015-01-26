@@ -107,7 +107,8 @@ public class getprocessServlet extends HttpServlet{
                         for(String col:cols){
                             out.write("<td>");
                             if(col.equals("")){col="NULL";};
-                            out.write(col);
+                            String tmp = new String(col.getBytes("UTF-8"),"ISO-8859-1");
+                            out.write(tmp);
                             out.write("</td>");
                         }
                         out.write("</tr>");
