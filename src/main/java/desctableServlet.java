@@ -80,6 +80,7 @@ public class desctableServlet extends HttpServlet{
                     }
                 }
             }
+            conn.close();
         }
         catch (ClassNotFoundException e) {
             // TODO Auto-generated catch block

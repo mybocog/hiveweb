@@ -50,6 +50,7 @@ public class myconfig {
             if(rs.next()){
                 maxline = rs.getInt("maxline");
             }
+            conn.close();
         }
         catch (ClassNotFoundException e) {
             // TODO Auto-generated catch block

@@ -35,6 +35,7 @@ public class dbinfoServlet extends HttpServlet{
                 String tmp = rs.getString("db");
                 dblist = dblist + tmp;
             }
+            conn.close();
         }
         catch (ClassNotFoundException e) {
             // TODO Auto-generated catch block

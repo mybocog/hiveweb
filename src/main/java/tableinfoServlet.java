@@ -36,6 +36,7 @@ public class tableinfoServlet extends HttpServlet{
                 String tmp = rs.getString("TBL_NAME");
                 tblist = tblist + tmp;
             }
+            conn.close();
         }
         catch (ClassNotFoundException e) {
             // TODO Auto-generated catch block

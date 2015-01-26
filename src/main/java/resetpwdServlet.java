@@ -51,14 +51,17 @@ public class resetpwdServlet extends HttpServlet {
                 }
                 else{
                     response.getWriter().write("loginerror");
+                    conn.close();
                     return;
                 }
 
             }
             else{
                 response.getWriter().write("loginerror");
+                conn.close();
                 return;
             }
+            conn.close();
         }
         catch (NoSuchAlgorithmException e){
             e.printStackTrace();

@@ -43,9 +43,11 @@ public class loginServlet extends HttpServlet {
                     request.getSession().setMaxInactiveInterval(-1);
                     request.getSession().setAttribute("username", username);
                     response.sendRedirect("adhoc");
+                    conn.close();
                     return;
                 }
             }
+            conn.close();
         }
         catch (NoSuchAlgorithmException e){
             e.printStackTrace();
